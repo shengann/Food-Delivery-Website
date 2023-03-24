@@ -7,9 +7,12 @@
         <li><a class="dropdown-item" href="#">Action</a></li>
         <li><a class="dropdown-item" href="#">Another action</a></li>
         <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <h1>niama chao ji bai</h1>
     </ul>
 </div>
+
+
+<h1>niama chao ji bai</h1>
+<h1>nmahai green</h1>
 
 <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle">
