@@ -19,8 +19,8 @@
     {{$product['product_price']}}
     </div>
     <div class="col">
-    <select class="form-select" aria-label="Default select example">
-      <option quantity>Quantity</option>
+    <select class="form-select" aria-label="Default select example" name="quantity">
+      <!-- <option quantity>Quantity</option> -->
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
