@@ -24,9 +24,11 @@ class ProductController extends Controller
         if ($req-> quantity!= 0 ){
             $id= $req->id;
             $product = Product::find($id);
+            error_log($id);
             $cart = session()->get('cart', []);
-            if(isset($cart[$id])) {
-                $cart[$id]['quantity']++;
+            if(isset($cart[$id]) && $cart[$id]!== "") {
+                error_log('no isset');
+                $cart[$id]['quantity']+= $req -> quantity;
             } else {
                 $cart[$id] = [
                     "name" => $product->product_name,
@@ -39,7 +41,7 @@ class ProductController extends Controller
         else{
             return view('welcome');
         }
-        
+
         session()->put('cart', $cart);
         return view('cart',['details' => $cart ]);
         // return redirect()->back()->with('success', 'Product added to cart successfully!');
