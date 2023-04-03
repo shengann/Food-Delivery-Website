@@ -11,8 +11,8 @@
 </div>
 
 
-<h1>niama chao ji bai</h1>
-<h1>nmahai green</h1>
+
+<h1>test JJ</h1>
 
 <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle">
@@ -20,6 +20,9 @@
     </button>
 </div>
 
+<a href="#" class="btn btn-primary" role="button" data-bs-toggle="button">Toggle link</a>
+<a href="#" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Active toggle link</a>
+<a class="btn btn-primary disabled" aria-disabled="true" role="button" data-bs-toggle="button">Disabled toggle link</a>
 
 </html>
 
