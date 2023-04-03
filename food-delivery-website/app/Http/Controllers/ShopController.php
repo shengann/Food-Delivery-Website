@@ -10,9 +10,12 @@ use Illuminate\Support\Facades\DB;
 class ShopController extends Controller
 {
 
+
     public function showProduct($shop_id){
+        $shop = Shop::find($shop_id);
         $data = Shop::find($shop_id)->getProduct;
-        return view('shop',['products'=> $data]);
+        return view('shop',['products'=> $data,'shop'=>$shop]);
     }
+
 
 }
