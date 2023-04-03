@@ -21,36 +21,46 @@ class ProductController extends Controller
 
     public function addToCart(Request $req)
     {
-        if ($req-> quantity == 'Quantity' ){
-            return view ('cart');
+        if ($req-> quantity!= 0 ){
+            $id= $req->id;
+            $product = Product::find($id);
+            $cart = session()->get('cart', []);
+            if(isset($cart[$id])) {
+                $cart[$id]['quantity']++;
+            } else {
+                $cart[$id] = [
+                    "name" => $product->product_name,
+                    "quantity" => 1,
+                    "price" => $product->product_price,
+                    // "image" => $product->image
+                ];
+            }
         }
-        $id= $req->id;
-        $product = Product::find($id);
-        $cart = session()->get('cart', []);
-  
-        if(isset($cart[$id])) {
-            $cart[$id]['quantity']++;
-        } else {
-            $cart[$id] = [
-                "name" => $product->product_name,
-                "quantity" => 1,
-                "price" => $product->product_price,
-                // "image" => $product->image
-            ];
+        else{
+            return view('welcome');
         }
-          
+        
         session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return view('cart',['details' => $cart ]);
+        // return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 
-    public function update(Request $request)
+    // public function update(Request $request)
+    // {
+    //     if($request->id && $request->quantity){
+    //         $cart = session()->get('cart');
+    //         $cart[$request->id]["quantity"] = $request->quantity;
+    //         session()->put('cart', $cart);
+    //         session()->flash('success', 'Cart updated successfully');
+    //     }
+    // }
+
+    public function update(Request $req)
     {
-        if($request->id && $request->quantity){
-            $cart = session()->get('cart');
-            $cart[$request->id]["quantity"] = $request->quantity;
-            session()->put('cart', $cart);
-            session()->flash('success', 'Cart updated successfully');
-        }
+    $post=Post::find($req->id);
+    $cart[$request->id]["quantity"] = $request->quantity;
+    session()->put('cart', $cart);
+    session()->flash('success', 'Cart updated successfully');
     }
 
     public function remove(Request $request)
