@@ -1,4 +1,12 @@
+@extends('layouts.app')
+@section('content')
+
 <html>
+    <br>
+
+<h1>"Welcome page", a page that gonna be the start of foodTiger, just to click for login and register on the header</h1>
+<br>
+
 <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Dropdown button
@@ -11,8 +19,8 @@
 </div>
 
 
-<h1>niama chao ji bai</h1>
-<h1>nmahai green</h1>
+
+<h1>test JJ</h1>
 
 <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle">
@@ -27,3 +35,4 @@
 </html>
 
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+@endsection
