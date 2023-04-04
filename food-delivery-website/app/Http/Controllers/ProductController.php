@@ -21,27 +21,35 @@ class ProductController extends Controller
 
     public function addToCart(Request $req)
     {
-        if ($req-> quantity!= 0 ){
-            $id= $req->id;
-            $product = Product::find($id);
-            error_log($id);
-            $cart = session()->get('cart', []);
-            if(isset($cart[$id]) && $cart[$id]!== "") {
-                error_log('no isset');
-                $cart[$id]['quantity']+= $req -> quantity;
-            } else {
-                $cart[$id] = [
-                    "name" => $product->product_name,
-                    "quantity" => 1,
-                    "price" => $product->product_price,
-                    // "image" => $product->image
-                ];
+        if (empty(session('shop')->shop_id))
+        {
+            if ($req-> quantity!= "Quantity"){
+                $id= $req->id;
+                $product = Product::find($id);
+                error_log($id);
+                $cart = session()->get('cart', []);
+                if(isset($cart[$id]) && $cart[$id]!== "") {
+                    error_log('no isset');
+                    $cart[$id]['quantity']+= $req -> quantity;
+                } else {
+                    $cart[$id] = [
+                        "name" => $product->product_name,
+                        "quantity" => $req -> quantity,
+                        "price" => $product->product_price,
+                        "image" => $product->product_image,
+                    ];
+                }
+                session()->put('shop', $req->shop_id);
             }
+            else{
+                return view('welcome');
+            }
+    
+
         }
         else{
-            return view('welcome');
+            return view('error');
         }
-
         session()->put('cart', $cart);
         return view('cart',['details' => $cart ]);
         // return redirect()->back()->with('success', 'Product added to cart successfully!');
