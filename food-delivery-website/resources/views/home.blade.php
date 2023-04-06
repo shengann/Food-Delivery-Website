@@ -23,10 +23,14 @@
         <div class="row mt-4">
             @foreach($shops as $shop)
             <div class="col-md-3 mx-auto">
-                <div class="card" style="height:300px;">
-                    <img style="" class="card-img-top" src="{{$shop['shop_image'] }}" alt="image">
+                <div class="card" style="height:400px;">
+                    <div style="height:200px;padding:2px">
+                        <img class="card-img-top" src="{{$shop['shop_image'] }}" alt="image">
+                    </div>
                     <div class="card-body">
-                        <h5>{{ $shop['shop_name']}}</h5>
+                        <div style="height:100px">
+                            <h5>{{ $shop['shop_name']}}</h5>
+                        </div>
                         <a href="shop/{{$shop['id']}}" class="btn btn-primary">Visit Shop</a>
                     </div>
                 </div>
