@@ -28,7 +28,7 @@ class UserController extends Controller
         return $list;
     }
     public function updateUser(Request $req){
-        $path = "{{ asset('img/userprofile_photo') }}";
+        $path = "public/img/userprofile_photo";
         $this->validate($req,[
             'image'=> 'sometimes|nullable|image|mimes:jpeg,jpg,png',
             'name' => 'required|string|min:1|max:255',

@@ -9,7 +9,7 @@
         <div class="card-body">
             <div class="row" style="height:500px;">
                 <div class="col-md-4">
-                    <img style="width:250px;height:250px;" src="../img/anonymous_profile/anonymous.jpg" alt="User Profile Picture">
+                    <img style="width:250px;height:250px;" src="{{ asset('storage/img/userprofile_photo/' . Auth::user()->image_path) }}" alt="User Profile Picture">
                 </div>
                 <div class="col-md-8">
                     <ul class="list-group">
