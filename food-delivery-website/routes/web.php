@@ -37,3 +37,4 @@ Route::get('home', [ShopController::class, 'getAllShops']);
 Route::view('welcome', 'welcome');
 
 Route::get('profile/{id}', [UserController::class, 'findUser']);
+Route::put('profile/{id}/edit', [UserController::class, 'editProfile']);
