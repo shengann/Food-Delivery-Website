@@ -92,13 +92,6 @@ const MyComponent = () => {
                     </tbody>
                 </Table>
             </div>
-         <h1>My Session Data</h1>
-        <ul>
-          {items.map(item => (
-            <li key={item.id}>{item.name}{item.price}</li>
-            // {item.quantity}{item.price}{item.image}
-          ))}
-         </ul>
     </div>
     // <ul>{items}</ul>
     );
