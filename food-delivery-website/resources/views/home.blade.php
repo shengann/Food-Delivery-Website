@@ -19,6 +19,16 @@
             </div>
         </div>
 
+        <!--search bar-->
+        <div class="row">
+        <form class="form-inline" action="{{route('search')}}">
+            <div class="form-group row my-5">
+                <input style="margin-left:300px;width:500px;" type="text" class="form-control" name="searchName" placeholder="Search using store name...">
+                <button type="submit" class="btn col-md-1 mx-3 btn-primary">Search</button>
+            </div>
+        </form>
+        </div>
+
         <!-- this div here is to display all the shops-->
         <div class="row mt-4">
             @foreach($shops as $shop)
