@@ -73,16 +73,18 @@ class ProductController extends Controller
     session()->flash('success', 'Cart updated successfully');
     }
 
-    public function remove(Request $request)
+    public function removeItem($id)
     {
-        if($request->id) {
+        // if($request->id) {
             $cart = session()->get('cart');
-            if(isset($cart[$request->id])) {
-                unset($cart[$request->id]);
+            if(isset($cart[$id])) {
+                unset($cart[$id]);
                 session()->put('cart', $cart);
+                error_log('delete liaooo');
+                return redirect('/showCart');
             }
-            session()->flash('success', 'Product removed successfully');
-        }
+            // session()->flash('success', 'Product removed successfully');
+        // }
     }
 
     public function showCart(){
