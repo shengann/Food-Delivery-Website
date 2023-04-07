@@ -19,9 +19,20 @@ Route::get('/', function () {
 });
 
 Route::get('shop',[ProductController::class, 'getProducts']);
+Route::post('shop',[ProductController::class, 'addToCart']);
 Route::get('shop/{shop_id}',[ShopController::class, 'showProduct']);
 Route::post('shop/addToCart',[ProductController::class, 'addToCart']);
 Route::get('showCart',[ProductController::class, 'showCart']);
-// Route::get('add-to-cart/{id}/{quantity}', [ProductController::class, 'addToCart'])->name('add.to.cart');
-// Route::patch('update-cart', [ProductController::class, 'update'])->name('update.cart');
-// Route::delete('remove-from-cart', [ProductController::class, 'remove'])->name('remove.from.cart');
+Route::get('shop/removeItem/{product_id}',[ProductController::class, 'removeItem']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
