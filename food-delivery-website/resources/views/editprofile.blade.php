@@ -14,10 +14,12 @@
                     <div class="col-md-4">
                         
                         <!-- <img style="width:250px;height:250px;" src="../../img/anonymous_profile/anonymous.jpg" alt="User Profile Picture"> -->
-                        <h1>{{ asset('storage/public/img/userprofile_photo/' . $data->image_path) }}</h1>
+                        <!-- <h1>{{ asset('storage/img/userprofile_photo/' . $data->image_path) }}</h1> -->
                         
                         @if ($data->image_path)
-                            <img style="width:250px;height:250px;" src="../../img/userprofile_photo/64306d085b188.jpg" alt="Profile Picture">
+                            <img style="width:250px;height:250px;" src="{{ asset('storage/img/userprofile_photo/' . $data->image_path) }}">
+
+                            
                         @else
                             <img style="width:250px;height:250px;" src="../../img/anonymous_profile/anonymous.jpg" alt="Default Profile Picture">
                         @endif
