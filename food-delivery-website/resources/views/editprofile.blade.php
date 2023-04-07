@@ -9,15 +9,25 @@
         <div class="card-body">
 
             <div class="row" style="height:800px;">
-                <form action="{{route('users.update', ['id' => $data->id])}}" method="POST">
+                <form action="{{route('users.update', ['id' => $data->id])}}" method="POST" enctype="multipart/form-data" >
                     @csrf   
                     <div class="col-md-4">
                         
-                        <img style="width:250px;height:250px;" src="../../img/anonymous_profile/anonymous.jpg" alt="User Profile Picture">
-                        <!-- <div class="mb-3">
-                            <label for="profileImage" class="form-label">User Profile Picture: </label>
-                            <input class="form-control" type="file" id="profileImage" name="profileImage">
-                        </div> -->
+                        <!-- <img style="width:250px;height:250px;" src="../../img/anonymous_profile/anonymous.jpg" alt="User Profile Picture"> -->
+                        <h1>{{ asset('storage/public/img/userprofile_photo/' . $data->image_path) }}</h1>
+                        
+                        @if ($data->image_path)
+                            <img style="width:250px;height:250px;" src="../../img/userprofile_photo/{{$data->image_path}}" alt="Profile Picture">
+                        @else
+                            <img style="width:250px;height:250px;" src="../../img/anonymous_profile/anonymous.jpg" alt="Default Profile Picture">
+                        @endif
+                        <div class="mb-3">
+                            <label for="image" class="form-label">User Profile Picture: </label>
+                            <input type="file" name="image" id="image" accept="image/*" class="form-control @error('image') is-invalid @enderror}}">
+                                @error('image')
+                                <div class="alert alert-danger">{{$message}}</div>
+                                @enderror
+                        </div>
                     </div>
                     <div class="col-md-8">
                         <!-- @if($errors->any())
