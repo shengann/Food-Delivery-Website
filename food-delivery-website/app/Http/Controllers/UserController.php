@@ -28,7 +28,7 @@ class UserController extends Controller
         return $list;
     }
     public function updateUser(Request $req){
-        $path = 'public/img/userprofile_photo';
+        $path = "{{ asset('img/userprofile_photo') }}";
         $this->validate($req,[
             'image'=> 'sometimes|nullable|image|mimes:jpeg,jpg,png',
             'name' => 'required|string|min:1|max:255',
@@ -50,20 +50,22 @@ class UserController extends Controller
         if ($image){
             $filename = uniqid() . '.' . $image->getClientOriginalExtension();
             $image->storeAs($path, $filename);
+            $data->image_path = $filename;
         }
                 
         $data->name = $req->name;
         $data->email = $req->email;
-        $data->password = Hash::make($req->password);
 
-       
+        if($req->password != null){
+            $data->password = Hash::make($req->password);
+        }
         
         // Get the new image file and rename it to the same name as the old file
         
     
        
         // Save the new file name to the profile_photo_path column of the user table
-        $data->image_path = $filename;
+        
         
     
 
