@@ -9,7 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class ShopController extends Controller
 {
-
+    //this function to retrieve all shop data
+    public function getAllShops()
+    {
+        $data = Shop::all();
+        return view('home', ['shops'=>$data]);
+    }
 
     public function showProduct($shop_id){
         $shop = Shop::find($shop_id);

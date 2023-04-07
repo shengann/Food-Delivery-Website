@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Auth;
@@ -32,5 +33,7 @@ Route::get('showCart',[ProductController::class, 'showCart']);
 // Route::delete('remove-from-cart', [ProductController::class, 'remove'])->name('remove.from.cart');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('home', [ShopController::class, 'getAllShops']);
 Route::view('welcome', 'welcome');
 
+Route::get('profile/{id}', [UserController::class, 'findUser']);
