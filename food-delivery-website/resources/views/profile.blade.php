@@ -20,7 +20,8 @@
             </div>
             <div class="row" style="height:200px;">
                 <a style="width:200px;height:40px" href="/home" class="btn btn-primary mx-auto">Back to Menu</a>
-                <a style="width:200px;height:40px" href="" class="btn btn-success mx-auto">Edit User Profile</a>
+                <a style="width:200px;height:40px" href="profile/edit/{{ Auth::user()->id }}" class="btn btn-success mx-auto">Edit User Profile</a>
+                
             </div>
         </div>
     </div>

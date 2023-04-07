@@ -14,5 +14,9 @@ class UserController extends Controller
         return view('profile', ['data'=>$data]);
     }
 
+    public function editProfile($id){
+        $data = User::find($id);
+        return view('editprofile', ['data' => $data]);
+    }
 
 }
