@@ -34,6 +34,7 @@ Route::get('showCart',[ProductController::class, 'showCart']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('home', [ShopController::class, 'getAllShops'])->middleware('auth');
+Route::get('home', [ShopController::class, 'findShop'])->name('search')->middleware('auth');
 Route::view('welcome', 'welcome');
 
 Route::get('profile/{id}', [UserController::class, 'findUser']);
