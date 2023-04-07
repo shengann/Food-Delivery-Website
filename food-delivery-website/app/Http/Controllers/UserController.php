@@ -18,5 +18,14 @@ class UserController extends Controller
         $data = User::find($id);
         return view('editprofile', ['data' => $data]);
     }
+    public function validateForm(Request $request){
+        $this->validate($request,[
+            'profileImage' => 'nullable|image|mimes:jpeg,jpg,png,gif',
+            'name' => 'required|string|min:1|max:255',
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+    }
 
 }
