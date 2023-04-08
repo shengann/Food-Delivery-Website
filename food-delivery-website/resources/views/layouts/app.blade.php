@@ -23,10 +23,6 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                    <x-header />
-                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -34,11 +30,35 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
-                    </ul>
+                    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+  <nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/home">
+      <img src="{{ asset('img/icons/logo.png') }}" alt="Logo" width="40" height="40" class="d-inline-block align-text-center">
+      foodTiger
+    </a>
+  </div>
+</nav>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="/home">Home</a>
+        <!-- <a class="nav-link" href="#">Features</a> -->
+        
+      </div>
+    </div>
+  </div>
+</nav>
+                </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                    <a class="nav-link btn" href="/showCart">
+                            <img src="{{ asset('img/icons/cart.png') }}" alt="cart" width="40" height="30" class="d-inline-block align-text-center">
+                    </a>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
