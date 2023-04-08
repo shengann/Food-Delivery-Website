@@ -5448,14 +5448,8 @@ var MyComponent = function MyComponent() {
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
         children: item[1].name
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-        children: item[1].price
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
-          type: "hidden",
-          id: "idphp",
-          value: item[0]
-        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("td", {
+        children: ["RM ", item[1].price]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_qty_picker__WEBPACK_IMPORTED_MODULE_2__.QuantityPicker, {
           id: item.id,
@@ -5490,9 +5484,9 @@ var MyComponent = function MyComponent() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
               children: "Title"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
-              children: "Content"
+              children: "Price"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
-              children: "Actions"
+              children: "Quantity"
             })]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tbody", {
@@ -5506,34 +5500,6 @@ var MyComponent = function MyComponent() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyComponent);
-
-// function Example(){
-
-//     return (
-//         <div className="container">
-//             <div className="row justify-content-center">
-//                 <div className="">
-//                         <QuantityPicker min={0} max={30} value={qty} onChange={(value)=> {
-//                             console.log(value);
-//                             qty = value;
-//                             console.log(qty + "wow");
-//                             if(qty == 0){
-//                                 if (document.getElementById('popup')) {
-//                                     console.log("kukujiao   ");
-//                                     ReactDOM.render(<Example2/>, document.getElementById('popup'));
-
-//                                 }
-//                                 }
-
-//                         }}/>
-//                 </div>
-//             </div>
-//         </div>
-
-//     );
-
-// }
-
 function Example2() {
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState4 = _slicedToArray(_useState3, 2),
@@ -5542,7 +5508,6 @@ function Example2() {
   var closeModal = function closeModal() {
     return setShow(false);
   };
-  console.log(delete_id + "i wan sleep");
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(reactjs_popup__WEBPACK_IMPORTED_MODULE_3__["default"], {
       open: true,
@@ -5552,7 +5517,7 @@ function Example2() {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: "modals",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("a", {
-          className: "closes btn",
+          className: "btn-close closes",
           onClick: closeModal,
           children: "\xD7"
         }), "Remove the selected item?", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {

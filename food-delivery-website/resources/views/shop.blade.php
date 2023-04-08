@@ -1,7 +1,8 @@
+@extends('layouts.app')
+@section('content')
 <head>
   <link rel="stylesheet" href="/css/app.css">
 </head>
-<x-header />
 <div class="container-fluid" style="background-color:#F1F1F1">
 <h1>{{$shop['shop_name']}}</h1>
 <img class="vw-100 w-auto p-3 h-50 d-inline-block" src={{$shop['shop_image']}} alt="">
@@ -42,3 +43,4 @@
 </div>
 </div>
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+@endsection

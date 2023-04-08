@@ -54,8 +54,7 @@ const MyComponent = () => {
     <tr key={item[0]}>
         <td><Media object src={item[1].image} style={imgStyle}/></td>
         <td>{item[1].name}</td>
-        <td>{item[1].price}</td>
-        <td><input type="hidden" id="idphp"  value={item[0]}></input></td>
+        <td>RM {item[1].price}</td>
         <td><QuantityPicker id={item.id} min={0} max={30} value={item[1].quantity} onChange={(value)=> {
                             console.log(item[0]+"nimi");
                             item.quantity = value;
@@ -82,8 +81,8 @@ const MyComponent = () => {
                         <tr>
                             <th>ID</th>
                             <th>Title</th>
-                            <th>Content</th>
-                            <th>Actions</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
                         </tr>
 
                     </thead>
@@ -99,44 +98,15 @@ const MyComponent = () => {
   
   export default MyComponent;
 
-
-// function Example(){
-
-//     return (
-//         <div className="container">
-//             <div className="row justify-content-center">
-//                 <div className="">
-//                         <QuantityPicker min={0} max={30} value={qty} onChange={(value)=> {
-//                             console.log(value);
-//                             qty = value;
-//                             console.log(qty + "wow");
-//                             if(qty == 0){
-//                                 if (document.getElementById('popup')) {
-//                                     console.log("kukujiao   ");
-//                                     ReactDOM.render(<Example2/>, document.getElementById('popup'));
-
-//                                 }
-//                                 }
-                            
-//                         }}/>
-//                 </div>
-//             </div>
-//         </div>
-
-//     );
-    
-// }
-
 function Example2(){
     
     const [show, setShow] = useState(false);
     const closeModal = () => setShow(false);
-    console.log(delete_id +"i wan sleep");
     return (
     <div>
     <Popup open={true} position="left center"  closeOnDocumentClick onClose={closeModal}>
         <div className="modals">
-          <a className="closes btn" onClick={closeModal}>
+          <a className="btn-close closes" onClick={closeModal}>
           &times;
           </a>
           Remove the selected item?

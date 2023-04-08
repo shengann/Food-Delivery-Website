@@ -24,12 +24,10 @@ Route::get('/', function () {
 });
 Auth::routes();
 
-Route::get('shop',[ProductController::class, 'getProducts']);
-Route::post('shop',[ProductController::class, 'addToCart']);
-Route::get('shop/{shop_id}',[ShopController::class, 'showProduct']);
-Route::post('shop/addToCart',[ProductController::class, 'addToCart']);
-Route::get('showCart',[ProductController::class, 'showCart']);
-Route::get('shop/removeItem/{product_id}',[ProductController::class, 'removeItem']);
+Route::get('shop/{shop_id}',[ShopController::class, 'showProduct'])->middleware('auth');
+Route::post('shop/addToCart',[ProductController::class, 'addToCart'])->middleware('auth');
+Route::get('showCart',[ProductController::class, 'showCart'])->middleware('auth');
+Route::get('shop/removeItem/{product_id}',[ProductController::class, 'removeItem'])->middleware('auth');
 
 Auth::routes();
 
