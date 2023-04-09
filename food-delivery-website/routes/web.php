@@ -44,3 +44,5 @@ Route::get('profile/{id}', [UserController::class, 'findUser']);
 Route::get('/admin',function(){
     return view('adminProfile');
 });
+
+Route::get('/admin/{shop_id}',[ShopController::class, 'showOrder'])->middleware('auth');
