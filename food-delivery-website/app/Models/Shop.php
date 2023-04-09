@@ -12,4 +12,9 @@ class Shop extends Model
     public function getProduct(){
         return $this -> hasMany('App\Models\Product');
     }
+
+    public function getOrder()
+    {
+        return $this->hasMany('App\Models\Order');
+    }
 }
