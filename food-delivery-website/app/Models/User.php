@@ -18,11 +18,19 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'name',
         'email',
         'password',
     ];
+    public function getOrder()
+    {
+        return $this->hasMany('App\Models\Order');
+    }
 
+    public function orders(){
+        return $this->hasMany(Order::class, 'user_id', 'id');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -46,4 +54,6 @@ class User extends Authenticatable
     public function updateUser($id, $data){
         return $this->where('id',$id) -> update(['name'=>$data]);
     }
+
+    
 }

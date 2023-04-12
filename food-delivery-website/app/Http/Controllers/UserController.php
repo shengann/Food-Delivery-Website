@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Order;
+use App\Models\Product;
 use ErrorException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -10,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Collection;
 
 
 class UserController extends Controller
@@ -19,6 +22,48 @@ class UserController extends Controller
         $data = User::find($id);
         return view('profile', ['data'=>$data]);
     }
+
+    public function showHistory($user_id){
+        $data = User::where('id',$user_id)->with('orders', 'orders.shop')->get();
+    //    dd($data = User::find($user_id)->getOrder);
+        
+        // dd($data1 = $data->join('shop','shop.id',"=", "$data.shop_id")
+        //         ->select("$data.*","shop.*")
+        //         ->get());
+        
+        // $order_items_list = [];
+        // foreach($data as $order){
+        //     echo"$order";
+        //     $order_items = $order->getOrder_items;
+        //     // $order_items_list[] = $order_items;
+
+        //     foreach($order_items as $item){
+        //         $product = Product::find($item['product_id']);
+        //         // echo "$product";
+        //         $data = DB::table('')
+        //             ->join('table2', 'table1.id', '=', 'table2.table1_id')
+        //             ->select('table1.*', 'table2.column1', 'table2.column2')
+        //             ->get();
+        //         // return $data;
+        //     }
+
+        // }
+        // $data = DB::table('order_items')
+        //             ->join('orders', 'order_items.order_id', '=', 'orders.id')
+        //             ->select('orders.*', 'order_items.*')
+        //             ->get();
+
+        // $data = DB::table('orders')
+        //             ->join('order_items', 'orders.id', '=', 'order_items.order_id')
+        //             ->join('products', 'order_items.product_id', '=', 'products.id')
+        //             ->where('orders.user_id', '=', $user_id)
+        //             ->select('orders.*', 'order_items.*', 'products.*')
+        //             ->get();
+        
+        return $data;
+        
+    }
+    
     public function deleteImage($filename, $filedirectory)
     {
         // Check if the file exists

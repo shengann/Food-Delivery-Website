@@ -16,4 +16,7 @@ class Product extends Model
     public function getShop(){
         return $this -> belongsTo('App\Models\Shop');
     }
+    public function getOrder_item(){
+        return $this -> belongsTo('App\Models\Order_item');
+    }
 }
