@@ -13,7 +13,6 @@
 
 <input type="hidden" id="session-data" value="<?= htmlspecialchars(json_encode(session('cart'))) ?>">
 
-
 <div id='popup'></div>
 <div id='mycomp'></div>
 
@@ -23,8 +22,9 @@
 @endif
 
 @if(session('cart'))
-<div style="width=100%">
-<a style="margin-left:70%" class="btn btn-success" href="">Confirm Order</a><br><br>
+<!--<div id='confirm'></div>-->
+<div style="width:100%">
+<a style="margin-left:70%;" class="btn btn-success position-relative" href="/confirmOrder">Confirm Order</a><br><br>
 </div>
 @endif
 
