@@ -79,8 +79,8 @@ const MyComponent = () => {
                 <Table>
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Title</th>
+                            <th>Photo</th>
+                            <th>Name</th>
                             <th>Price</th>
                             <th>Quantity</th>
                         </tr>
