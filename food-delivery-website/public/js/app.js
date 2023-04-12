@@ -5512,17 +5512,11 @@ function Example2() {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(reactjs_popup__WEBPACK_IMPORTED_MODULE_3__["default"], {
       open: true,
       position: "left center",
-      closeOnDocumentClick: true,
-      onClose: closeModal,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: "modals",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("a", {
-          className: "btn-close closes",
-          onClick: closeModal,
-          children: "\xD7"
-        }), "Remove the selected item?", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        children: ["Remove the selected item?", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("a", {
-            href: "/home",
+            href: "/showCart",
             className: "btn btn-light",
             children: "NOOOO"
           }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("a", {
