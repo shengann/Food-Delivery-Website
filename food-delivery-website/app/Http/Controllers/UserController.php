@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
+use Illuminate\Support\Facades\Storage;
+
 
 class UserController extends Controller
 {
@@ -16,6 +18,24 @@ class UserController extends Controller
     public function findUser($id){
         $data = User::find($id);
         return view('profile', ['data'=>$data]);
+    }
+    public function deleteImage($filename, $filedirectory)
+    {
+        // Check if the file exists
+        if (Storage::exists($filedirectory."/". $filename)) {
+
+            // Delete the file
+            Storage::delete($filedirectory."/". $filename);
+            
+            // Optionally, you can also delete the file from the database or perform other actions
+            // ...
+            
+            // Return a success message
+            return response()->json(['message' => 'Image deleted successfully.']);
+        } else {
+            // Return an error message if the file doesn't exist
+            return response()->json(['message' => 'Image not found.'], 404);
+        }
     }
 
     public function editProfile($id){
@@ -40,14 +60,12 @@ class UserController extends Controller
         ]);
         $data = User::find($req->id);
         $image = $req->file('image');
+        // dd($image);
 
-        if ($image && $data->image_path) {
-            $old_file_path = public_path($path . $data->image_path);
-            if (file_exists($old_file_path)) {
-                unlink($old_file_path);
-            }
+        if ($image) {
+            $this->deleteImage($data->image_path, $path);
         }
-        if ($image){
+        if ($image!=null){
             $filename = uniqid() . '.' . $image->getClientOriginalExtension();
             $image->storeAs($path, $filename);
             $data->image_path = $filename;
