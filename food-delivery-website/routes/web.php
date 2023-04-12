@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Auth;
@@ -48,4 +49,5 @@ Route::get('/admin',function(){
     return view('adminProfile');
 });
 
-Route::get('/admin/{shop_id}',[ShopController::class, 'showOrder'])->middleware('auth');
+Route::get('/admin/{shop_id}/order',[ShopController::class, 'showOrder'])->middleware('auth');
+Route::get('/admin/{shop_id}/order/{order_id}', [OrderController::class, 'showOrder_item'])->middleware('auth');

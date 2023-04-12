@@ -35,7 +35,7 @@ class ShopController extends Controller
         $shop = Shop::find($shop_id);
         $data = Shop::find($shop_id)->getOrder;
         // session()->put('shop', $shop_id);
-        return view('order_received', ['orders' => $data, 'shop' => $shop]);
+        return $data;
     }
 
 
