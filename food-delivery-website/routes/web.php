@@ -29,6 +29,7 @@ Route::get('shop/{shop_id}',[ShopController::class, 'showProduct'])->middleware(
 Route::post('shop/addToCart',[ProductController::class, 'addToCart'])->middleware('auth');
 Route::get('showCart',[ProductController::class, 'showCart'])->middleware('auth');
 Route::get('shop/removeItem/{product_id}',[ProductController::class, 'removeItem'])->middleware('auth');
+Route::get('removeItem/{product_id}',[ProductController::class, 'removeItem'])->middleware('auth');
 
 Auth::routes();
 
