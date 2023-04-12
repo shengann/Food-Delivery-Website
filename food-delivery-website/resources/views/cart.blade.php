@@ -16,5 +16,11 @@
 <p class="position-absolute bottom-20 start-50 translate-middle-x --bs-tertiary-color fs-3">Oops! There's nothing in your cart yet</p>
 @endif
 
+@if(session('cart'))
+<div style="width=100%">
+<a style="margin-left:70%" class="btn btn-success" href="">Confirm Order</a><br><br>
+</div>
+@endif
+
 @endsection
 <script src="/js/app.js"></script>
