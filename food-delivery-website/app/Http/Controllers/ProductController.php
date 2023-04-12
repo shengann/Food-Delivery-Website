@@ -6,6 +6,7 @@ use App\Models\Shop;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
@@ -80,6 +81,11 @@ class ProductController extends Controller
             if(isset($cart[$id])) {
                 unset($cart[$id]);
                 session()->put('cart', $cart);
+                $checkCart = session()->get('cart');
+                if(!$checkCart)
+                {
+                    Session::forget('shop');
+                }
                 error_log('delete liaooo');
                 return redirect('/showCart');
             }
