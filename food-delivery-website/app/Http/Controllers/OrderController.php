@@ -19,6 +19,6 @@ class OrderController extends Controller
     {
         $order = Order::find($order_id);
         $data = Order::find($order_id)->getOrder_items;
-        return view('orderItem', ['order_items' => $data, 'order' => $order]);
+        return $data;
     }
 }
