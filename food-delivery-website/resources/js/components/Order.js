@@ -21,7 +21,7 @@ export default class Order extends Component {
     loadOrder() {
         const orderElement = document.getElementById('order');
         const shopId = orderElement.dataset.shopId
-        const url = `/admin/${shopId}/order`;
+        const url = `/api/orders/${shopId}`;
         axios.get(url).then((response) => {
             this.setState({
                 orders: response.data
@@ -50,9 +50,22 @@ export default class Order extends Component {
             )
         })
 
+        let orderDetailsModal = null;
+        if (this.state.modalId) {
+            orderDetailsModal = (
+                <OrderDetailsModal
+                    isOpen={this.state.viewDetailsModal}
+                    toggle={() => this.toggleViewDetailsModal(null)}
+                    orderId={this.state.modalId}
+                />
+            );
+        }
+
+        
+
         return (
             <div>
-                <OrderDetailsModal isOpen={this.state.viewDetailsModal} toggle={() => this.toggleViewDetailsModal(null)} id={this.state.modalId} />
+                {orderDetailsModal}
 
                 <div className="mx-5 my-5">
                     <table className="table table-striped table-bordered">
