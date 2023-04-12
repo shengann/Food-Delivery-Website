@@ -104,13 +104,10 @@ function Example2(){
     const closeModal = () => setShow(false);
     return (
     <div>
-    <Popup open={true} position="left center"  closeOnDocumentClick onClose={closeModal}>
+    <Popup open={true} position="left center"  >
         <div className="modals">
-          <a className="btn-close closes" onClick={closeModal}>
-          &times;
-          </a>
           Remove the selected item?
-          <div><a href='/home' className='btn btn-light' >NOOOO</a> <a className='btn btn-primary' href={'removeItem/' + delete_id}>Remove</a></div>
+          <div><a href='/showCart' className='btn btn-light' >NOOOO</a> <a className='btn btn-primary' href={'removeItem/' + delete_id}>Remove</a></div>
           
         </div>
     </Popup>
