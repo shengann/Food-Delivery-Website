@@ -10,8 +10,7 @@ class Order_itemController extends Controller
     public function getOrder_items()
     {   
         $data = Order_Item::where('order_id', '1')->get();
-        // dd($data);
-        return view('orderItem', ['order_items' => $data]);
+        return $data;
     }
 
 }

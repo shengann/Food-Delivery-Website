@@ -17,7 +17,6 @@ class OrderController extends Controller
 
     public function showOrder_item($order_id)
     {
-        $order = Order::find($order_id);
         $data = Order::find($order_id)->getOrder_items;
         return $data;
     }

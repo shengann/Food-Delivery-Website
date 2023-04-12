@@ -21,4 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('orders/{shopId}',[ShopController::class, 'showOrder']);
+Route::get('order-items/{orderId}', [OrderController::class, 'showOrder_item']);
 
