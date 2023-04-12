@@ -31,7 +31,7 @@
                 </a>
             </div>
         </div>
-        <div id='order' data-shop-id='{{ Auth::user()->shop_id }}'></div>
+        <div id='order' data-shop-id='{{ Auth::user()->shop_id }} '></div>
 
     </div>
 
