@@ -17,7 +17,7 @@
                         <!-- <h1>{{ asset('storage/img/userprofile_photo/' . $data->image_path) }}</h1> -->
                         
                         @if ($data->image_path)
-                            <img style="width:250px;height:250px;" src="{{ asset('storage/img/userprofile_photo/' . $data->image_path) }}">
+                            <img style="width:250px;height:250px;" src=" {{ asset('storage/img/userprofile_photo/' . $data->image_path) }}">
 
                             
                         @else
