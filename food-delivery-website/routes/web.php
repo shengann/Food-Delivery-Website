@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
@@ -28,6 +29,9 @@ Auth::routes();
 Route::get('shop/{shop_id}',[ShopController::class, 'showProduct'])->middleware('auth');
 Route::post('shop/addToCart',[ProductController::class, 'addToCart'])->middleware('auth');
 Route::get('showCart',[ProductController::class, 'showCart'])->middleware('auth');
+Route::get('confirmOrder', [PaymentController::class, 'noPaymentMethod'])->middleware('auth');
+Route::post('confirmOrder', [PaymentController::class, 'getPaymentMethod'])->name('payment')->middleware('auth');
+Route::get('confirmOrder/confirm', [PaymentController::class, 'confirm'])->middleware('auth');
 Route::get('shop/removeItem/{product_id}',[ProductController::class, 'removeItem'])->middleware('auth');
 Route::get('removeItem/{product_id}',[ProductController::class, 'removeItem'])->middleware('auth');
 
