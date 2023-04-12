@@ -24,19 +24,28 @@ Route::get('/', function () {
 });
 Auth::routes();
 
-Route::get('shop',[ProductController::class, 'getProducts']);
-Route::get('shop/{shop_id}',[ShopController::class, 'showProduct']);
-Route::post('shop/addToCart',[ProductController::class, 'addToCart']);
-Route::get('showCart',[ProductController::class, 'showCart']);
-// Route::get('add-to-cart/{id}/{quantity}', [ProductController::class, 'addToCart'])->name('add.to.cart');
-// Route::patch('update-cart', [ProductController::class, 'update'])->name('update.cart');
-// Route::delete('remove-from-cart', [ProductController::class, 'remove'])->name('remove.from.cart');
+Route::get('shop/{shop_id}',[ShopController::class, 'showProduct'])->middleware('auth');
+Route::post('shop/addToCart',[ProductController::class, 'addToCart'])->middleware('auth');
+Route::get('showCart',[ProductController::class, 'showCart'])->middleware('auth');
+Route::get('shop/removeItem/{product_id}',[ProductController::class, 'removeItem'])->middleware('auth');
+
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('home', [ShopController::class, 'getAllShops']);
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('home', [ShopController::class, 'getAllShops'])->middleware('auth');
+Route::get('home', [ShopController::class, 'findShop'])->name('search')->middleware('auth');
 Route::view('welcome', 'welcome');
 
 Route::get('profile/{id}', [UserController::class, 'findUser']);
 Route::get('profile/{id}/edit', [UserController::class, 'editProfile']);
 Route::post('profile/{id}', [UserController::class, 'updateUser'])->name('users.update');
 // Route::post('history/{id}', [UserController::class, 'orderHistory'])->name('users.update');
+
+Route::get('/admin',function(){
+    return view('adminProfile');
+});
+
+Route::get('/admin/{shop_id}',[ShopController::class, 'showOrder'])->middleware('auth');
