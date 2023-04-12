@@ -41,4 +41,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function updateUser($id, $data){
+        return $this->where('id',$id) -> update(['name'=>$data]);
+    }
 }

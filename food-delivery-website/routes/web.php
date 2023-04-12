@@ -41,6 +41,9 @@ Route::get('home', [ShopController::class, 'findShop'])->name('search')->middlew
 Route::view('welcome', 'welcome');
 
 Route::get('profile/{id}', [UserController::class, 'findUser']);
+Route::get('profile/{id}/edit', [UserController::class, 'editProfile']);
+Route::post('profile/{id}', [UserController::class, 'updateUser'])->name('users.update');
+// Route::post('history/{id}', [UserController::class, 'orderHistory'])->name('users.update');
 
 Route::get('/admin',function(){
     return view('adminProfile');
