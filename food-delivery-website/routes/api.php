@@ -30,7 +30,7 @@ Route::get('historyitem/{orderId}', [Order_ItemController::class, 'showhistory_i
 Route::get('history/{id}', [UserController::class, 'showHistory']);
 
 Route::get('ordershop/{shopId}', [OrderController::class, 'showShop']);
-Route::get('item/{shopId}', [ShopController::class, 'showProduct_api']);
+Route::get('shop/{shopId}/item', [ShopController::class, 'showProduct_api']);
 Route::put('item/{itemId}', [ProductController::class, 'updateProduct']);
 Route::post('item', [ProductController::class, 'createProduct']);
 Route::delete('item/{itemId}', [ProductController::class, 'deleteProduct']);
