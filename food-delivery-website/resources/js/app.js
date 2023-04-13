@@ -17,3 +17,4 @@ require('./components/History');
 require('./components/HistoryDetail');
 require('./components/Order');
 require('./components/OrderDetails');
+require('./components/ListedItem');

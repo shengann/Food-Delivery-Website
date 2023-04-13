@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="card mx-4 " style="height: 200px;">
-                <a class="card-body" style="text-decoration: none; font-weight: none;">
+                <a href="/admin" class="card-body" style="text-decoration: none; font-weight: none;">
                     <i class="bi bi-telephone-inbound d-block mb-4" style=" font-size: 4rem;"></i>
                     <h3 class=" card-title " style=" font-size: 2.5rem;">Order Received</h3>
                 </a>
@@ -17,7 +17,7 @@
         </div>
         <div class="col-sm-4">
             <div class="card mx-4 " style="height: 200px;">
-                <a href="/admin/listed-item" class="card-body" style="text-decoration: none; font-weight: none;">
+                <a href="admin/listed-item" class="card-body" style="text-decoration: none; font-weight: none;">
                     <i class="bi bi-list d-block mb-4" style=" font-size: 4rem;"></i>
                     <h3 class=" card-title " style=" font-size: 2.5rem;">Listed Item</h3>
                 </a>
@@ -26,16 +26,16 @@
         <div class="col-sm-4">
             <div class="card mx-4 " style="height: 200px;">
                 <a href="#" class="card-body" style="text-decoration: none;">
-                    <i class="bi bi-shop d-block mb-4" style=" font-size: 4rem;""></i>
+                    <i class="bi bi-shop d-block mb-4" style=" font-size: 4rem;"></i>
                     <h3 class=" card-title " style=" font-size: 2.5rem;">Shop Details</h3>
                 </a>
             </div>
         </div>
-        <div id='order' data-shop-id='{{ Auth::user()->shop_id }} '></div>
+        <div id='listedItem' data-shop-id='{{ Auth::user()->shop_id }} '></div>
 
     </div>
 
     </body>
-    <script src="/js/components/Order.js"></script>
+    <script src="/js/components/ListedItem.js"></script>
 
     @endsection

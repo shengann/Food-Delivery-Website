@@ -59,6 +59,10 @@ Route::get('/admin',function(){
     return view('adminProfile');
 });
 
+Route::get('/admin/listed-item', function () {
+    return view('listedItem');
+});
+
 Route::get('/admin/{shop_id}/order',[ShopController::class, 'showOrder'])->middleware('auth');
 Route::get('/admin/{shop_id}/order/{order_id}', [OrderController::class, 'showOrder_item'])->middleware('auth');
 

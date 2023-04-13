@@ -9,8 +9,10 @@ class Product extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
-        'name', 'price', 'description', 'image'
+        'product_name', 'product_price', 'product_quantity', 'shop_id'
     ];
 
     public function getShop(){
