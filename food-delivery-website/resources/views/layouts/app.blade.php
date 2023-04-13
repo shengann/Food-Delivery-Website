@@ -87,14 +87,15 @@
                                     <a class="dropdown-item" href="profile/{{ Auth::user()->id }}">
                                         Profile
                                     </a>
-                                    <!-- <a class="dropdown-item" href="history/{{ Auth::user()->id }}">
+                                    <a class="dropdown-item" href="orderhistory/{{ Auth::user()->id }}">
                                         Booking History
-                                    </a> -->
+                                    </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>
                             </li>
+                            
                         @endguest
                     </ul>
                 </div>

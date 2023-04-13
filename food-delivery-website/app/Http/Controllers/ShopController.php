@@ -30,7 +30,7 @@ class ShopController extends Controller
         return view('shop',['products'=> $data,'shop'=>$shop]);
     }
 
-    public function showOrder($shop_id)
+    public function showShop($shop_id)
     {
         $shop = Shop::find($shop_id);
         $data = Shop::find($shop_id)->getOrder;

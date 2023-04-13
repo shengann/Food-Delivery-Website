@@ -48,7 +48,12 @@ Route::view('welcome', 'welcome');
 Route::get('profile/{id}', [UserController::class, 'findUser']);
 Route::get('profile/{id}/edit', [UserController::class, 'editProfile']);
 Route::post('profile/{id}', [UserController::class, 'updateUser'])->name('users.update');
-// Route::post('history/{id}', [UserController::class, 'orderHistory'])->name('users.update');
+
+
+Route::get('orderhistory/{id}', function(){
+    return view('orderHistory');
+})->middleware('auth');
+
 
 Route::get('/admin',function(){
     return view('adminProfile');
@@ -56,3 +61,4 @@ Route::get('/admin',function(){
 
 Route::get('/admin/{shop_id}/order',[ShopController::class, 'showOrder'])->middleware('auth');
 Route::get('/admin/{shop_id}/order/{order_id}', [OrderController::class, 'showOrder_item'])->middleware('auth');
+
