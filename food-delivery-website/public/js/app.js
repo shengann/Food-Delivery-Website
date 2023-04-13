@@ -5811,7 +5811,7 @@ var HistoryDetailsModal = /*#__PURE__*/function (_Component) {
       var _this2 = this;
       var url = "/api/historyitem/".concat(this.props.orderId);
       axios.get(url).then(function (response) {
-        // console.log(response.data);
+        console.log(response.data);
         _this2.setState({
           orderDetails: response.data
         });
@@ -5821,7 +5821,7 @@ var HistoryDetailsModal = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       var orderDetails = this.state.orderDetails.map(function (orderDetail) {
-        console.log(orderDetail);
+        // console.log(orderDetail);
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
             className: "text-center",
@@ -5829,7 +5829,7 @@ var HistoryDetailsModal = /*#__PURE__*/function (_Component) {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
             className: "text-center",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-              src: "$product[{orderDetail[\"product\"].product_image}]"
+              src: "img/product_img/hawaiianpizza.jpeg"
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
             className: "text-center",

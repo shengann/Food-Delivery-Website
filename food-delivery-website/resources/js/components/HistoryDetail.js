@@ -14,7 +14,7 @@ class HistoryDetailsModal extends Component {
     loadOrderItem() {
         const url = `/api/historyitem/${this.props.orderId}`;
         axios.get(url).then((response) => {
-            // console.log(response.data);
+            console.log(response.data);
             this.setState({
                 orderDetails: response.data
             })
@@ -23,13 +23,13 @@ class HistoryDetailsModal extends Component {
 
     render() {
         let orderDetails = this.state.orderDetails.map((orderDetail) => {
-            console.log(orderDetail);
+            // console.log(orderDetail);
             return (
                 
                 <tr key={orderDetail.item_id}>
                     <td className="text-center">{orderDetail["product"].product_name}</td>
                 
-                    <td className="text-center"><img src='$product[{orderDetail["product"].product_image}]'></img></td>
+                    <td className="text-center"><img src='img/product_img/hawaiianpizza.jpeg'></img></td>
 
 
                     <td className="text-center">{orderDetail.quantity}</td>
