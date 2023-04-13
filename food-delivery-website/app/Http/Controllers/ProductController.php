@@ -97,4 +97,24 @@ class ProductController extends Controller
         $cart = session()->get('cart');
         return view('cart',['details'=>$cart]);
     }
+
+    public function createProduct(Request $request){
+        return Product::create($request->all());
+    }
+
+    public function updateProduct(Request $request,$id)
+    {
+        $item = Product::findorFail($id);
+        $item->update($request->all());
+        return $item;
+    }
+
+    public function deleteProduct($id)
+    {
+        $item = Product::findorFail($id);
+        $item->delete();
+        return 204;
+    }
+
+    
 }
