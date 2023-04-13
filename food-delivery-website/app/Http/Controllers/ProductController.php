@@ -116,5 +116,11 @@ class ProductController extends Controller
         return 204;
     }
 
+    public function getProduct( $id)
+    {
+        $item = Product::findorFail($id);
+        return $item;
+    }
+
     
 }
