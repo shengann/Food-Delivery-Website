@@ -13,7 +13,7 @@
 </style>
 
 @section('content')
-<div class="container" style="height:100vh">
+<div class="container" >
         
     <div class="card ma-5" style="height:100vh;">
         <div class="card-header">
