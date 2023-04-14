@@ -17,7 +17,7 @@
         </div>
         <div class="col-sm-4">
             <div class="card mx-4 " style="height: 200px;">
-                <a href="admin/listed-item" class="card-body" style="text-decoration: none; font-weight: none;">
+                <a  class="card-body" style="text-decoration: none; font-weight: none;">
                     <i class="bi bi-list d-block mb-4" style=" font-size: 4rem;"></i>
                     <h3 class=" card-title " style=" font-size: 2.5rem;">Listed Item</h3>
                 </a>
