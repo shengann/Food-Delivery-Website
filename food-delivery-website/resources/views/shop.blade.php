@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <head>
-  <link rel="stylesheet" href="/css/app.css">
+  <link type="stylesheet" css="{{ asset('css/style.css') }}" />
 </head>
 <div class="container-fluid" style="background-color:#F1F1F1">
 <h1>{{$shop['shop_name']}}</h1>
@@ -39,12 +39,10 @@
               <option value="2">2</option>
               <option value="3">3</option>
               </select>
-          </div>
-
-          <div class="col d-flex justify-content-center align-items-center">
-              <button class="btn btn-primary border border-1" type="submit">Add To Cart</button>
-          </div>
-
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+              <button class="btn btn-orange border border-1" type="submit">Add To Cart</button>
+            </div>
         </div>
     </form>
   @endforeach
