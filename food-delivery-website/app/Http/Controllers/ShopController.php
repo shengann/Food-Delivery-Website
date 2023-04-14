@@ -38,9 +38,7 @@ class ShopController extends Controller
 
     public function showShop($shop_id)
     {
-        $shop = Shop::find($shop_id);
-        $data = Shop::find($shop_id)->getOrder;
-        // session()->put('shop', $shop_id);
+        $data = Shop::where("id",$shop_id)->with('getOrder', 'getOrder.user')->get();
         return $data;
     }
 
