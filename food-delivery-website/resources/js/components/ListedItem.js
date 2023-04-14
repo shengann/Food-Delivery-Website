@@ -3,14 +3,17 @@ import ReactDOM from 'react-dom';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button,Media} from 'reactstrap'
 import axios from 'axios';
 import ItemDetailsModal from './editItem.js';
-
+import AddItemModal from './addItem.js';
 export default class ListedItem extends Component {
     constructor() {
         super()
         this.state = {
             items: [],
             viewEditModal: false,
-            modalId: null
+            modalId: null,
+            viewAddModal: false,
+            shopId: null
+
         }
     }
 
@@ -21,6 +24,9 @@ export default class ListedItem extends Component {
     loadItem() {
         const listedItemElement = document.getElementById('listedItem');
         const shopId = listedItemElement.dataset.shopId
+        this.setState({
+            shopId: shopId
+        })
         const url = `/api/shop/${shopId}/item`;
         axios.get(url).then((response) => {
             this.setState({
@@ -33,6 +39,12 @@ export default class ListedItem extends Component {
         this.setState({
             viewEditModal: !this.state.viewEditModal,
             modalId: id
+        })
+    }
+
+    toggleViewAddModal = () => {
+        this.setState({
+            viewAddModal: !this.state.viewAddModal
         })
     }
 
@@ -71,12 +83,23 @@ export default class ListedItem extends Component {
             );
         }
 
+        let addItemModal = null;
+        if (this.state.viewAddModal) {
+            addItemModal = (
+                <AddItemModal
+                    isOpen={this.state.viewAddModal}
+                    toggle={() => this.toggleViewAddModal()}
+                    shopId={this.state.shopId}
+                />
+            );
+        }
         return (
             <div>
                 {itemDetailsModal}
+                {addItemModal}
                 
                 <div className="mx-5 my-5">
-                    <button className="btn btn-info bi-plus-square"> Add Items</button>
+                    <button onClick={() => this.toggleViewAddModal()} className="btn btn-info bi-plus-square"> Add Items</button>
                     <table className="table table-striped table-bordered">
                         <thead>
                             <tr>
