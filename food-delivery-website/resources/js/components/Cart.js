@@ -44,15 +44,9 @@ const MyComponent = () => {
   const items = Object.entries(sessionData);
   const itemss = Object.values(items);
   const ids= Object.keys(sessionData);
-//   const details = Object.keys(items);
   console.log(items);
   console.log(itemss);
   console.log(ids );
-//   for (var i = 0; i < 2; i++)
-//   {
-//     console.log(itemss[i][0][1]);
-//   }
-//   console.log(details);
     let itemlist = items.map(item => {
         return(
     <tr key={item[0]}>
@@ -60,15 +54,12 @@ const MyComponent = () => {
         <td>{item[1].name}</td>
         <td>RM {item[1].price}</td>
         <td><QuantityPicker id={item.id} min={0} max={30} value={item[1].quantity} onChange={(value)=> {
-                            console.log(item[0]+"nimi");
                             item.quantity = value;
-                            console.log(item.quantity + "wow");
                             if(item.quantity == 0){
 
                                 if (document.getElementById('popup')) {
                                     delete_id = item[0];
-                                    ReactDOM.render(<Example2/>, document.getElementById('popup'));
-                                    console.log(delete_id + 'bibi');
+                                    ReactDOM.render(<GetPopup/>, document.getElementById('popup'));
                                 }
                                 }
                             
@@ -76,7 +67,6 @@ const MyComponent = () => {
     </tr>
     )})
     var str = itemlist.values();
-    console.log("itempriceeeee:"+ str.next.value);
 
     return (
       <div>
@@ -97,73 +87,41 @@ const MyComponent = () => {
                 </Table>
             </div>
     </div>
-    // <ul>{items}</ul>
     );
   }
   
   export default MyComponent;
 
-function Example2(){
+function GetPopup(){
     
     const [show, setShow] = useState(false);
     const closeModal = () => setShow(false);
     return (
     <div>
-    <Popup open={true} position="left center"  >
+    <Popup open={true} position="left center" modal={true} >
         <div className="modals">
-          Remove the selected item?
-          <div><a href='/showCart' className='btn btn-light' >NOOOO</a> <a className='btn btn-primary' href={'removeItem/' + delete_id}>Remove</a></div>
-          
+          <div class="container"><br></br>
+          <h3> Remove the selected item?</h3> <br></br>
+          <div class="position-relative "><a href='/showCart' className='btn btn-light' >NOOOO</a> <a className='btn btn-primary' href={'removeItem/' + delete_id}>Remove</a></div><br></br>
+          </div>
         </div>
     </Popup>
     </div>
     );
 }
 
-function ConfirmOrder(){
-    const [showModal, setShowModal] = useState(false);
-
-    const handleShowModal = () =>{
-        setShowModal(true);
-    };
-
-    const handleCloseModal = () =>{
-        setShowModal(false);
-    };
-
-    return(
-        <div>
-            <button style={{"height":"40px","width":"150px", "margin": "0px 0px 0px 70%", "backgroundColor":"green", "color":"white", "borderWidth":"0", "borderRadius":"5px"}} onClick={handleShowModal}>Confirm Order</button>
-            {showModal && (
-                <Popup open={true}>
-                    <button onClick={handleCloseModal}>Back to Cart</button>
-                    <p>Test</p>
-                </Popup>
-            )}
-        </div>
-    );
-}
 
 
-export {Example2, ConfirmOrder};
-// export {Popup};
-
-if (document.getElementById('example')) {
-    ReactDOM.render(<Example />, document.getElementById('example'));
-}
+export {GetPopup};
 
 if (document.getElementById('idphp')) {
     id = ([document.getElementById('idphp').value]);
-    console.log(id + "mimi");
 }
 
 if (document.getElementById('mycomp')) {
     ReactDOM.render(<MyComponent />, document.getElementById('mycomp'));
 }
 
-if (document.getElementById('confirm')){
-    ReactDOM.render(<ConfirmOrder />, document.getElementById('confirm'));
-}
 
 
 

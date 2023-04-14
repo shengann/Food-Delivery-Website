@@ -34,6 +34,7 @@ class ProductController extends Controller
                     $cart[$id]['quantity']+= $req -> quantity;
                 } else {
                     $cart[$id] = [
+                        "id" => $id,
                         "name" => $product->product_name,
                         "quantity" => $req -> quantity,
                         "price" => $product->product_price,
@@ -53,8 +54,10 @@ class ProductController extends Controller
         }
         session()->put('cart', $cart);
         return view('cart',['details' => $cart ]);
-        // return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
+       
+
+
     public function removeItem($id)
     {
         // if($request->id) {
@@ -70,8 +73,6 @@ class ProductController extends Controller
                 error_log('delete liaooo');
                 return redirect('/showCart');
             }
-            // session()->flash('success', 'Product removed successfully');
-        // }
     }
 
     public function showCart(){

@@ -43,8 +43,8 @@ export default class Order extends Component {
                     <td className="text-center">{order['user'].name}</td>
                     <td className="text-center">{order.id}</td>
                     <td className="text-center">{order.order_date}</td>
-                    <td className="text-center">
-                        <button onClick={() => this.toggleViewDetailsModal(order.id)} className="btn btn-info bi bi-eye-fill custom-btn-margin"> View Details</button>
+                    <td className="text-center ">
+                        <button onClick={() => this.toggleViewDetailsModal(order.id)} className="text-white btn btn-primary bi bi-eye-fill custom-btn-margin" > View Details</button>
                     </td>
                 </tr>
             )
@@ -66,6 +66,8 @@ export default class Order extends Component {
         return (
             <div>
                 {orderDetailsModal}
+                <h1 className="mt-4" style={{ textAlign: 'center' }}>Order Received</h1>
+
 
                 <div className="mx-5 my-5">
                     <table className="table table-striped table-bordered">

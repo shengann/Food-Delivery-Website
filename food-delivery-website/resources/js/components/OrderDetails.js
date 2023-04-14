@@ -54,7 +54,7 @@ class OrderDetailsModal extends Component {
                     </div>
                 </ModalBody>
                 <ModalFooter>
-                    <button onClick={this.props.toggle}>Close</button>
+                    <button className="btn btn-secondary"onClick={this.props.toggle}>Close</button>
                 </ModalFooter>
             </Modal>
         );
