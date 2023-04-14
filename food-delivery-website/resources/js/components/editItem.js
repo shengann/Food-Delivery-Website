@@ -33,10 +33,13 @@ class ItemDetailsModal extends Component {
     }
 
     handleUpdate = () => {
+        const shopId = this.props.shopId;
+        console.log("shopId", shopId)
         const url = `/api/item/${this.props.itemId}`;
         axios.put(url, {
             product_name: this.state.productName,
             product_price: this.state.productPrice,
+            shop_id: shopId
         }).then(() => {
             this.props.toggle();
             this.props.updateParentState();
@@ -52,15 +55,15 @@ class ItemDetailsModal extends Component {
                     {this.state.itemDetails && (
                         <>
                             <div>
-                                <div className="form-group">
+                                <div className="form-group my-4">
                                     <label>Product Name:</label>
                                     <input type="text" value={this.state.productName} onChange={this.handleProductNameChange} />
                                 </div>
-                                <div className="form-group">
+                                <div className="form-group my-4">
                                     <label>Product Price:</label>
                                     <input type="number" value={this.state.productPrice} onChange={this.handleProductPriceChange} />
                                 </div>
-                                <div className="form-group">
+                                <div className="form-group my-4">
                                     <label>Product Image:</label>
                                     <input type="text" value={this.state.productImg} onChange={this.handleProductImgChange} />
                                 </div>
@@ -69,8 +72,8 @@ class ItemDetailsModal extends Component {
                     )}
                 </ModalBody>
                 <ModalFooter>
-                    <button onClick={this.handleUpdate} className="btn btn-primary">Update</button>
-                    <button onClick={this.props.toggle}>Close</button>
+                    <button onClick={this.handleUpdate} className="btn btn-primary mx-3">Update</button>
+                    <button onClick={this.props.toggle} className="btn btn-secondary">Close</button>
                 </ModalFooter>
             </Modal>
         );
