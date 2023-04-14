@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
-<div class="container-fluid" style="background-color:#F1F1F1">
-<br><br>
+<div class="container-fluid" >
 
-<div >
+
+<div class="container">
     @if(!session('shop'))
     <a class="btn btn-primary position-relative" href="/home">Back to Home</a><br><br>
     @else

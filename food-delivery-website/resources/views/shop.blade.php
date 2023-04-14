@@ -16,10 +16,12 @@
 </div>
 
 <div class="container-fluid">
-<h1 class="">{{$shop['shop_name']}}</h1>
+<div class="container">
+<h1 class="pl-4">{{$shop['shop_name']}}</h1><br>
+</div>
 <div class="container first h-40" style="height: 200px;">
 </div>
-</div>
+</div><br><br>
 
 <link href="./style.css" rel="stylesheet" />
 
@@ -27,7 +29,7 @@
   @foreach ($products as $product)
     <form action="addToCart" method="post">
     @csrf
-      <div class="row justify-content-start row-hover">
+      <div class="row justify-content-start row-hover row-gap-3">
           <input type="hidden" name="id"  value="{{$product['id']}}">
 
           <input type="hidden" name="shop_id"  value="{{$shop['id']}}">

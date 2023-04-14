@@ -12,7 +12,7 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-require('./components/Example');
+require('./components/Cart');
 require('./components/History');
 require('./components/HistoryDetail');
 require('./components/Order');
