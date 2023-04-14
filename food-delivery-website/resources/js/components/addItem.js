@@ -55,10 +55,6 @@ class AddDetailsModal extends Component {
                             <label>Product Price: </label>
                             <input  type="number" name="product_price" value={this.state.product_price} onChange={this.handleInputChange} />
                         </div>
-                        <div className="form-group my-4">
-                            <label>Product Image: </label>
-                            <input type="text" name="product_image" value={this.state.product_image} onChange={this.handleInputChange} />
-                        </div>
                         {this.state.error && <div className="alert alert-danger">{this.state.error}</div>}
                         <button type="submit" className="btn btn-primary " >Create new item</button>
                         <button className="btn btn-secondary"onClick={this.props.toggle}>Close</button>
