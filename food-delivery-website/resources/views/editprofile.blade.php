@@ -24,10 +24,9 @@
             style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem; height: 30vh">
             @if ($data->image_path)
                             <img src="{{ asset('storage/img/userprofile_photo/' . Auth::user()->image_path) }}"
-                alt="Default Profile Picture" class="img-fluid my-5" style="width: 300px; height: 300px;border-radius: 50%;" />
+                alt="Default Profile Picture" class="img-fluid" style="width: 300px; height: 300px;border-radius: 50%;" />
                             
                         @else
-                            <img style="width:250px;height:250px;" src="../../img/anonymous_profile/anonymous.jpg" alt="Default Profile Picture">
                             <img src="../../img/anonymous_profile/anonymous.jpg' . Auth::user()->image_path) }}"
                 alt="Default Profile Picture" class="img-fluid my-5" style="width: 300px; height: 300px;border-radius: 50%;" />
                         @endif
@@ -40,12 +39,10 @@
                     @csrf   
                     <div class="col-md-8" style="padding-bottom:2vh">
                         
-                        <!-- <img style="width:250px;height:250px;" src="../../img/anonymous_profile/anonymous.jpg" alt="User Profile Picture"> -->
-                        <!-- <h1>{{ asset('storage/img/userprofile_photo/' . $data->image_path) }}</h1> -->
-                        
+
                        
                         <div class="mb-3 " >
-                            <label for="image" class="form-label">User Profile Picture: 
+                            <label for="image" class="form-label" style="color:black;">Upload Profile Picture: 
                             </label>
                             <input type="file" name="image" id="image" accept="image/*" class="form-control @error('image') is-invalid @enderror}}">
                                 @error('image')
@@ -111,9 +108,9 @@
                             </ul>
                         
                     </div>
-                    <div class="row" style="height:10vh; padding-top: 2vh;">
-                        <a style="width:200px;height:40px" href="/profile/{{ Auth::user()->id }}" class="btn btn-primary mx-auto">Return</a>
-                        <button type="submit" style="width:200px;height:40px" class="btn btn-success mx-auto">Update User</button>
+                    <div class="row" style="height:10vh; padding-top: 5vh;padding-buttom: 0vh;">
+                        <a style="width:50%;height:5vh" href="/profile/{{ Auth::user()->id }}" class="btn btn-primary mx-auto">Return</a>
+                        <button type="submit" style="width:50%;height:5vh" class="btn btn-success mx-auto">Update User</button>
                         
                     </div>
                 </form>
