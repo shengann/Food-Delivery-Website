@@ -66,13 +66,13 @@ class ProductController extends Controller
     //     }
     // }
 
-    public function update(Request $req)
-    {
-    $post=Post::find($req->id);
-    $cart[$request->id]["quantity"] = $request->quantity;
-    session()->put('cart', $cart);
-    session()->flash('success', 'Cart updated successfully');
-    }
+    // public function update(Request $req)
+    // {
+    // $post=Post::find($req->id);
+    // $cart[$request->id]["quantity"] = $request->quantity;
+    // session()->put('cart', $cart);
+    // session()->flash('success', 'Cart updated successfully');
+    // }
 
     public function removeItem($id)
     {
