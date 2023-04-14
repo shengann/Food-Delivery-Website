@@ -65,7 +65,11 @@ export default class ListedItem extends Component {
                     <td className="text-center">RM {item.product_price}</td>
                     <td className="text-center">
                         <button onClick={() => this.toggleViewEditModal(item.id)} className="btn btn-info bi bi-pencil"> Edit Details</button>
-                        <button className="btn btn-danger bi bi bi-trash"> Delete Item</button>
+                        <button onClick={() => {
+                            axios.delete(`/api/item/${item.id}`).then(() => {
+                                this.loadItem();
+                            })
+                        }}  className="btn btn-danger bi bi bi-trash" > Delete Item</button>
                     </td>
                 </tr>
             )
