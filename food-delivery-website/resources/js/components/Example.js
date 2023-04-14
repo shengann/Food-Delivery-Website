@@ -120,32 +120,9 @@ function Example2(){
     );
 }
 
-function ConfirmOrder(){
-    const [showModal, setShowModal] = useState(false);
-
-    const handleShowModal = () =>{
-        setShowModal(true);
-    };
-
-    const handleCloseModal = () =>{
-        setShowModal(false);
-    };
-
-    return(
-        <div>
-            <button style={{"height":"40px","width":"150px", "margin": "0px 0px 0px 70%", "backgroundColor":"green", "color":"white", "borderWidth":"0", "borderRadius":"5px"}} onClick={handleShowModal}>Confirm Order</button>
-            {showModal && (
-                <Popup open={true}>
-                    <button onClick={handleCloseModal}>Back to Cart</button>
-                    <p>Test</p>
-                </Popup>
-            )}
-        </div>
-    );
-}
 
 
-export {Example2, ConfirmOrder};
+export {Example2};
 // export {Popup};
 
 if (document.getElementById('example')) {
@@ -161,9 +138,6 @@ if (document.getElementById('mycomp')) {
     ReactDOM.render(<MyComponent />, document.getElementById('mycomp'));
 }
 
-if (document.getElementById('confirm')){
-    ReactDOM.render(<ConfirmOrder />, document.getElementById('confirm'));
-}
 
 
 
