@@ -27,7 +27,7 @@ class AddImagePathToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumnIfExists('image_path');
         });
     }
 }
