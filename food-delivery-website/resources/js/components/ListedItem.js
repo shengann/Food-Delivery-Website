@@ -60,11 +60,11 @@ export default class ListedItem extends Component {
         let items = this.state.items.map((item) => {
             return (
                 <tr key={item.id}>
-                    <td className="text-center"><Media object style={{ height: '100px', width: '100px' }} src={item.product_image}  /></td>
+                    <td className="text-center"><Media object style={{ height: '100px', width: '100px' }} src={item.product_image ? item.product_image : '../img/product_img/napolitan.jpeg'}  /></td>
                     <td className="text-center">{item.product_name}</td>
                     <td className="text-center">RM {item.product_price}</td>
                     <td className="text-center">
-                        <button onClick={() => this.toggleViewEditModal(item.id)} className="btn btn-info bi bi-pencil"> Edit Details</button>
+                        <button onClick={() => this.toggleViewEditModal(item.id)} className="btn btn-info bi bi-pencil text-white"> Edit Details</button>
                         <button onClick={() => {
                             axios.delete(`/api/item/${item.id}`).then(() => {
                                 this.loadItem();
@@ -102,9 +102,11 @@ export default class ListedItem extends Component {
             <div>
                 {itemDetailsModal}
                 {addItemModal}
+                <h1 className="mt-4" style={{ textAlign: 'center' }}>Listed Items</h1>
+
                 
                 <div className="mx-5 my-5">
-                    <button onClick={() => this.toggleViewAddModal()} className="btn btn-info bi-plus-square"> Add Items</button>
+                    <button onClick={() => this.toggleViewAddModal()} className="btn btn-primary bi-plus-square"> Add Items</button>
                     <table className="table table-striped table-bordered">
                         <thead>
                             <tr>

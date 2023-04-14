@@ -39,7 +39,7 @@ class ItemDetailsModal extends Component {
         axios.put(url, {
             product_name: this.state.productName,
             product_price: this.state.productPrice,
-            shop_id: shopId
+            shop_id: shopId,
         }).then(() => {
             this.props.toggle();
             this.props.updateParentState();
@@ -62,10 +62,6 @@ class ItemDetailsModal extends Component {
                                 <div className="form-group my-4">
                                     <label>Product Price:</label>
                                     <input type="number" value={this.state.productPrice} onChange={this.handleProductPriceChange} />
-                                </div>
-                                <div className="form-group my-4">
-                                    <label>Product Image:</label>
-                                    <input type="text" value={this.state.productImg} onChange={this.handleProductImgChange} />
                                 </div>
                             </div>
                         </>
