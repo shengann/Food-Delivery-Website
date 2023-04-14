@@ -1,4 +1,4 @@
-import React, { Component,} from 'react';
+import React, { Component} from 'react';
 import ReactDOM from 'react-dom';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button,Media} from 'reactstrap'
 import axios from 'axios';
@@ -94,6 +94,7 @@ export default class ListedItem extends Component {
                     isOpen={this.state.viewAddModal}
                     toggle={() => this.toggleViewAddModal()}
                     shopId={this.state.shopId}
+                    updateParentState={this.updateParentState}
                 />
             );
         }

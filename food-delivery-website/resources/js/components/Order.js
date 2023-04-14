@@ -24,7 +24,7 @@ export default class Order extends Component {
         const url = `/api/orders/${shopId}`;
         axios.get(url).then((response) => {
             this.setState({
-                orders: response.data
+                orders: response.data[0]['get_order']
             })
         })
     }
@@ -40,7 +40,7 @@ export default class Order extends Component {
         let orders = this.state.orders.map((order) => {
             return (
                 <tr key={order.id}>
-                    <td className="text-center"></td>
+                    <td className="text-center">{order['user'].name}</td>
                     <td className="text-center">{order.id}</td>
                     <td className="text-center">{order.order_date}</td>
                     <td className="text-center">

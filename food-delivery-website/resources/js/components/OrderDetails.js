@@ -12,7 +12,7 @@ class OrderDetailsModal extends Component {
     }
 
     loadOrderItem() {
-        const url = `/api/order-items/${this.props.orderId}`;
+        const url = `/api/historyitem/${this.props.orderId}`;
         axios.get(url).then((response) => {
             this.setState({
                 orderDetails: response.data
@@ -24,7 +24,7 @@ class OrderDetailsModal extends Component {
         let orderDetails = this.state.orderDetails.map((orderDetail) => {
             return (
                 <tr key={order.id}>
-                    <td className="text-center">{orderDetail.product_id}</td>
+                    <td className="text-center">{orderDetail["product"].product_name}</td>
                     <td className="text-center">{orderDetail.quantity}</td>
                     <td className="text-center">
                         RM {orderDetail.item_price}

@@ -143,4 +143,10 @@ class UserController extends Controller
 
     }
 
+    public function findUser_api($id)
+    {
+        $data = User::find($id);
+        return $data;
+    }
+
 }
