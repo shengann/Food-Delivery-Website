@@ -26,7 +26,6 @@
                 <input style="margin-left:300px;width:500px;" type="text" class="form-control" name="searchName" placeholder="Search using store name...">
                 <button type="submit" class="btn col-md-1 mx-3 btn-primary">Search</button>
             </div>
-            <button class=" btn btn-primary">WEEE</button>
         </form>
         </div>
 
