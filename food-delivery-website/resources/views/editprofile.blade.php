@@ -15,21 +15,23 @@
 @section('content')
 <div class="container" >
         
-    <div class="card ma-5" style="height:100vh;">
+    <div class="card ma-5" style="height:130vh;">
+    
         <div class="card-header">
             <h6 style=" font-size: 30px; text-align:center">Edit User Profile</h6>
         </div>
 
         <div class="col-md-12 gradient-custom text-center text-white"
             style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem; height: 30vh">
-            @if ($data->image_path)
-                            <img src="{{ asset('storage/img/userprofile_photo/' . Auth::user()->image_path) }}"
-                alt="Default Profile Picture" class="img-fluid" style="width: 300px; height: 300px;border-radius: 50%;" />
-                            
-                        @else
-                            <img src="../../img/anonymous_profile/anonymous.jpg' . Auth::user()->image_path) }}"
-                alt="Default Profile Picture" class="img-fluid my-5" style="width: 300px; height: 300px;border-radius: 50%;" />
-                        @endif
+            @if($data->image_path)
+              
+              <img src="{{ asset('storage/img/userprofile_photo/' . Auth::user()->image_path) }}"
+                alt="Avatar" class="img-fluid my-5" style="width: 300px; height: 300px;border-radius: 50%;" />
+                
+              @else
+              <img src="{{ asset('img/anonymous_profile/anonymous.jpg') }}"
+                alt="Avatar" class="img-fluid my-5" style="width: 300px; height: 300px;border-radius: 50%;" />
+              @endif
             
              
             <div class="card-body row d-flex justify-content-center align-items-center" style="height:10vh;">
@@ -85,6 +87,18 @@
                                     </div>
                                 </li>
                                 <li class="list-group-item">
+                                    <div class="mb-3 row">
+                                        <label for="address" class="col-sm-2 col-form-label">Address:</label>
+                                        <div class="col-sm-10">
+                                        <textarea id="address" class="form-control @error('address')is-invalid @enderror" name="address" rows="5" cols="40" value="{{$data['address']}} " placeholder="{{$data['address']}}"></textarea>
+                                        <!-- <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{$data['address']}}"> -->
+                                        @error('address')
+                                            <div class="alert alert-danger">{{$message}}</div>
+                                            @enderror    
+                                    </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
                                 <div class="mb-3 row">
                                     <label for="password" class="col-sm-2 col-form-label">Password:</label>
                                     <div class="col-sm-10">
@@ -115,14 +129,15 @@
                     </div>
                 </form>
                 
-               
                 
             
         </div>
+        
         </div>
 
        
     </div>
+                                
 </div>
 
 

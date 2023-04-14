@@ -54,9 +54,17 @@
           <div class="row g-0">
             <div class="col-md-4 gradient-custom text-center text-white"
               style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+              
+              
+              @if($data->image_path)
+              
               <img src="{{ asset('storage/img/userprofile_photo/' . Auth::user()->image_path) }}"
                 alt="Avatar" class="img-fluid my-5" style="width: 300px; height: 300px;border-radius: 50%;" />
-              
+                
+              @else
+              <img src="{{ asset('img/anonymous_profile/anonymous.jpg') }}"
+                alt="Avatar" class="img-fluid my-5" style="width: 300px; height: 300px;border-radius: 50%;" />
+              @endif
               <i class="far fa-edit mb-5"></i>
             </div>
             <div class="col-md-8">
@@ -78,7 +86,15 @@
                     <input type="text" class="text-muted info_details"  size="10" placeholder="{{$data['email']}}" readOnly/>
                     </span>
                   </div>
-                  
+
+                  <div class="col-60 mb-3">
+                    <span style="display: flex;">
+                    <label class = "info_title">Address:</label>
+                    
+                    <textarea id="address" class="text-muted info_details" name="address" rows="6" cols="40" value="{{$data['address']}}"placeholder="{{$data['address']}}" readOnly></textarea>
+
+                    </span>
+                  </div>
                   
                     
                 </div>

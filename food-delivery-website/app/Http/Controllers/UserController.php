@@ -99,6 +99,7 @@ class UserController extends Controller
             'name' => 'required|string|min:1|max:255',
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($req->id),],
             'password' => ['sometimes', 'nullable', 'min:8', 'confirmed'],
+            'address' => 'required|max:255',
         ], [
             'image.mimes' => 'The uploaded file must be a JPEG, PNG, or JPG image.',
             'image.image' => 'The uploaded file must be an image.'
@@ -118,6 +119,8 @@ class UserController extends Controller
                 
         $data->name = $req->name;
         $data->email = $req->email;
+        $data->address = $req->address;
+        
 
         if($req->password != null){
             $data->password = Hash::make($req->password);
