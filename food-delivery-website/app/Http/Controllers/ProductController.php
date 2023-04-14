@@ -6,6 +6,7 @@ use App\Models\Shop;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
@@ -65,13 +66,13 @@ class ProductController extends Controller
     //     }
     // }
 
-    public function update(Request $req)
-    {
-    $post=Post::find($req->id);
-    $cart[$request->id]["quantity"] = $request->quantity;
-    session()->put('cart', $cart);
-    session()->flash('success', 'Cart updated successfully');
-    }
+    // public function update(Request $req)
+    // {
+    // $post=Post::find($req->id);
+    // $cart[$request->id]["quantity"] = $request->quantity;
+    // session()->put('cart', $cart);
+    // session()->flash('success', 'Cart updated successfully');
+    // }
 
     public function removeItem($id)
     {
@@ -80,6 +81,11 @@ class ProductController extends Controller
             if(isset($cart[$id])) {
                 unset($cart[$id]);
                 session()->put('cart', $cart);
+                $checkCart = session()->get('cart');
+                if(!$checkCart)
+                {
+                    Session::forget('shop');
+                }
                 error_log('delete liaooo');
                 return redirect('/showCart');
             }
@@ -91,4 +97,30 @@ class ProductController extends Controller
         $cart = session()->get('cart');
         return view('cart',['details'=>$cart]);
     }
+
+    public function createProduct(Request $request){
+        return Product::create($request->all());
+    }
+
+    public function updateProduct(Request $request,$id)
+    {
+        $item = Product::findorFail($id);
+        $item->update($request->all());
+        return $item;
+    }
+
+    public function deleteProduct($id)
+    {
+        $item = Product::findorFail($id);
+        $item->delete();
+        return 204;
+    }
+
+    public function getProduct( $id)
+    {
+        $item = Product::findorFail($id);
+        return $item;
+    }
+
+    
 }

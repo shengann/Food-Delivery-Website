@@ -13,3 +13,9 @@ require('./bootstrap');
  */
 
 require('./components/Example');
+require('./components/History');
+require('./components/HistoryDetail');
+require('./components/Order');
+require('./components/OrderDetails');
+require('./components/ListedItem');
+require('./components/editItem');
