@@ -22,8 +22,9 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return redirect('home');
+})->middleware('auth');
+
 Auth::routes();
 
 Route::get('shop/{shop_id}',[ShopController::class, 'showProduct'])->middleware('auth');
@@ -34,11 +35,6 @@ Route::post('confirmOrder', [PaymentController::class, 'getPaymentMethod'])->nam
 Route::get('confirmOrder/confirm', [PaymentController::class, 'confirm'])->middleware('auth');
 Route::get('shop/removeItem/{product_id}',[ProductController::class, 'removeItem'])->middleware('auth');
 Route::get('removeItem/{product_id}',[ProductController::class, 'removeItem'])->middleware('auth');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('home', [ShopController::class, 'getAllShops'])->middleware('auth');

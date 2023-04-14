@@ -19,7 +19,6 @@ class AddDetailsModal extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-
         const data = {
             product_name: this.state.product_name,
             product_price: this.state.product_price,
@@ -31,6 +30,7 @@ class AddDetailsModal extends Component {
             .then((response) => {
                 console.log(response.data);
                 this.props.toggle();
+                this.props.updateParentState();
             })
             .catch((error) => {
                 console.log(error.response);
@@ -62,8 +62,8 @@ class AddDetailsModal extends Component {
                     </form>
                 </ModalBody>
                 <ModalFooter>
-                    <button type="submit" className="btn btn-primary ">Create new item</button>
-                        <button className="btn btn-secondary"onClick={this.props.toggle}>Close</button>
+                    <button type="submit" className="btn btn-primary " >Create new item</button>
+                    <button className="btn btn-secondary"onClick={this.props.toggle}>Close</button>
                 </ModalFooter>
             </Modal>
         );
