@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<a class="btn btn-success position-relative" href="/shop/{{session('shop')}}}">Back to Shop</a><br><br>
 <div class="container-fluid" style="background-color:#F1F1F1">
 
 @if(!session('shop'))
