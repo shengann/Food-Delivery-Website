@@ -59,9 +59,3 @@
     <a style="margin-left:70%;" class="btn btn-success position-relative" href="/confirmOrder/confirm/{{Auth::user()->id}}">Confirm Payment</a><br><br>
 </div>
 @endsection
-<script>
-    function run() {
-        var selected = document.getElementById("paymentOption").value;
-        document.getElementById('result').innerHTML = selected;
-    }
-</script>
