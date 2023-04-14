@@ -5387,7 +5387,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_qty_picker__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-qty-picker */ "./node_modules/react-qty-picker/dist/index.es.js");
 /* harmony import */ var reactjs_popup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reactjs-popup */ "./node_modules/reactjs-popup/dist/reactjs-popup.esm.js");
-/* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../../../../css/app.css */ "./public/css/app.css");
+/* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../../css/app.css */ "./public/css/app.css");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/esm/index.js");
 /* harmony import */ var reactjs_popup_dist_index_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! reactjs-popup/dist/index.css */ "./node_modules/reactjs-popup/dist/index.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
@@ -6045,7 +6045,8 @@ var ListedItem = /*#__PURE__*/function (_Component) {
           toggle: function toggle() {
             return _this3.toggleViewAddModal();
           },
-          shopId: this.state.shopId
+          shopId: this.state.shopId,
+          updateParentState: this.updateParentState
         });
       }
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -6163,7 +6164,7 @@ var Order = /*#__PURE__*/function (_Component) {
       var url = "/api/orders/".concat(shopId);
       axios__WEBPACK_IMPORTED_MODULE_2___default().get(url).then(function (response) {
         _this2.setState({
-          orders: response.data
+          orders: response.data[0]['get_order']
         });
       });
     }
@@ -6174,7 +6175,8 @@ var Order = /*#__PURE__*/function (_Component) {
       var orders = this.state.orders.map(function (order) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-            className: "text-center"
+            className: "text-center",
+            children: order['user'].name
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
             className: "text-center",
             children: order.id
@@ -6296,7 +6298,7 @@ var OrderDetailsModal = /*#__PURE__*/function (_Component) {
     key: "loadOrderItem",
     value: function loadOrderItem() {
       var _this2 = this;
-      var url = "/api/order-items/".concat(this.props.orderId);
+      var url = "/api/historyitem/".concat(this.props.orderId);
       axios.get(url).then(function (response) {
         _this2.setState({
           orderDetails: response.data
@@ -6310,7 +6312,7 @@ var OrderDetailsModal = /*#__PURE__*/function (_Component) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
             className: "text-center",
-            children: orderDetail.product_id
+            children: orderDetail["product"].product_name
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
             className: "text-center",
             children: orderDetail.quantity
@@ -6432,6 +6434,7 @@ var AddDetailsModal = /*#__PURE__*/function (_Component) {
       axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/item', data).then(function (response) {
         console.log(response.data);
         _this.props.toggle();
+        _this.props.updateParentState();
       })["catch"](function (error) {
         console.log(error.response);
         _this.setState({
@@ -6447,7 +6450,9 @@ var AddDetailsModal = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_3__.Modal, {
         isOpen: this.props.isOpen,
         toggle: this.props.toggle,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_3__.ModalHeader, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("form", {
+          onSubmit: this.handleSubmit
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_3__.ModalHeader, {
           toggle: this.props.toggle,
           children: "Add New Item "
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_3__.ModalBody, {
@@ -6486,19 +6491,17 @@ var AddDetailsModal = /*#__PURE__*/function (_Component) {
             }), this.state.error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
               className: "alert alert-danger",
               children: this.state.error
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              type: "submit",
+              className: "btn btn-primary ",
+              children: "Create new item"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "btn btn-secondary",
+              onClick: this.props.toggle,
+              children: "Close"
             })]
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(reactstrap__WEBPACK_IMPORTED_MODULE_3__.ModalFooter, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-            type: "submit",
-            className: "btn btn-primary ",
-            children: "Create new item"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-            className: "btn btn-secondary",
-            onClick: this.props.toggle,
-            children: "Close"
-          })]
-        })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_3__.ModalFooter, {})]
       });
     }
   }]);

@@ -35,3 +35,4 @@ Route::put('item/{itemId}', [ProductController::class, 'updateProduct']);
 Route::get('item/{itemId}', [ProductController::class, 'getProduct']);
 Route::post('item', [ProductController::class, 'createProduct']);
 Route::delete('item/{itemId}', [ProductController::class, 'deleteProduct']);
+Route::get('user/{id}',[UserController::class, 'findUser_api']);
