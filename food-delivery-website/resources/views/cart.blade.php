@@ -3,11 +3,13 @@
 <div class="container-fluid" style="background-color:#F1F1F1">
 <br><br>
 
+<div >
     @if(!session('shop'))
     <a class="btn btn-primary position-relative" href="/home">Back to Home</a><br><br>
     @else
     <a class="btn btn-primary position-relative" href="/shop/{{session('shop')}}}">Back to Shop</a><br><br>
     @endif
+</div>
 
     <input type="hidden" id="session-data"x value="<?= htmlspecialchars(json_encode(session('cart'))) ?>">
 
