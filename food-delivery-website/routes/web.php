@@ -32,7 +32,7 @@ Route::post('shop/addToCart',[ProductController::class, 'addToCart'])->middlewar
 Route::get('showCart',[ProductController::class, 'showCart'])->middleware('auth');
 Route::get('confirmOrder', [PaymentController::class, 'noPaymentMethod'])->middleware('auth');
 Route::post('confirmOrder', [PaymentController::class, 'getPaymentMethod'])->name('payment')->middleware('auth');
-Route::get('confirmOrder/confirm', [PaymentController::class, 'confirm'])->middleware('auth');
+Route::get('confirmOrder/confirm/{id}', [PaymentController::class, 'confirm'])->middleware('auth');
 Route::get('shop/removeItem/{product_id}',[ProductController::class, 'removeItem'])->middleware('auth');
 Route::get('removeItem/{product_id}',[ProductController::class, 'removeItem'])->middleware('auth');
 

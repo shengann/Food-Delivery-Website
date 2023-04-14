@@ -31,6 +31,12 @@
     </div>
     @endif
 
+    @if(session('cart'))
+    <div style="width:100%">
+    <a style="margin-left:70%;" class="btn btn-success position-relative" href="/confirmOrder">Confirm Order</a><br><br>
+    </div>
+    @endif
+
 </div>
 @endsection
 <script src="/js/app.js"></script>

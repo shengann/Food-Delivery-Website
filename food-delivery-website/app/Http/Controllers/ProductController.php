@@ -34,6 +34,7 @@ class ProductController extends Controller
                     $cart[$id]['quantity']+= $req -> quantity;
                 } else {
                     $cart[$id] = [
+                        "id" => $id,
                         "name" => $product->product_name,
                         "quantity" => $req -> quantity,
                         "price" => $product->product_price,
