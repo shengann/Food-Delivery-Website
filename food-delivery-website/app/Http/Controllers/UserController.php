@@ -25,41 +25,7 @@ class UserController extends Controller
 
     public function showHistory($user_id){
         $data = User::where('id',$user_id)->with('orders', 'orders.shop')->get();
-    //    dd($data = User::find($user_id)->getOrder);
-        
-        // dd($data1 = $data->join('shop','shop.id',"=", "$data.shop_id")
-        //         ->select("$data.*","shop.*")
-        //         ->get());
-        
-        // $order_items_list = [];
-        // foreach($data as $order){
-        //     echo"$order";
-        //     $order_items = $order->getOrder_items;
-        //     // $order_items_list[] = $order_items;
-
-        //     foreach($order_items as $item){
-        //         $product = Product::find($item['product_id']);
-        //         // echo "$product";
-        //         $data = DB::table('')
-        //             ->join('table2', 'table1.id', '=', 'table2.table1_id')
-        //             ->select('table1.*', 'table2.column1', 'table2.column2')
-        //             ->get();
-        //         // return $data;
-        //     }
-
-        // }
-        // $data = DB::table('order_items')
-        //             ->join('orders', 'order_items.order_id', '=', 'orders.id')
-        //             ->select('orders.*', 'order_items.*')
-        //             ->get();
-
-        // $data = DB::table('orders')
-        //             ->join('order_items', 'orders.id', '=', 'order_items.order_id')
-        //             ->join('products', 'order_items.product_id', '=', 'products.id')
-        //             ->where('orders.user_id', '=', $user_id)
-        //             ->select('orders.*', 'order_items.*', 'products.*')
-        //             ->get();
-        
+   
         return $data;
         
     }
@@ -99,7 +65,7 @@ class UserController extends Controller
             'name' => 'required|string|min:1|max:255',
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($req->id),],
             'password' => ['sometimes', 'nullable', 'min:8', 'confirmed'],
-            'address' => 'required|max:255',
+            'address' => 'min:0|max:255',
         ], [
             'image.mimes' => 'The uploaded file must be a JPEG, PNG, or JPG image.',
             'image.image' => 'The uploaded file must be an image.'

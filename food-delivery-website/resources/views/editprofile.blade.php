@@ -23,7 +23,7 @@
 
         <div class="col-md-12 gradient-custom text-center text-white"
             style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem; height: 30vh">
-            @if($data->image_path)
+             @if($data->image_path)
               
               <img src="{{ asset('storage/img/userprofile_photo/' . Auth::user()->image_path) }}"
                 alt="Avatar" class="img-fluid my-5" style="width: 300px; height: 300px;border-radius: 50%;" />
@@ -90,7 +90,8 @@
                                     <div class="mb-3 row">
                                         <label for="address" class="col-sm-2 col-form-label">Address:</label>
                                         <div class="col-sm-10">
-                                        <textarea id="address" class="form-control @error('address')is-invalid @enderror" name="address" rows="5" cols="40" value="{{$data['address']}} " placeholder="{{$data['address']}}"></textarea>
+                                        <textarea id="address" class="form-control @error('address')is-invalid @enderror" name="address" rows="5" cols="40" value="{{$data['address']}} " placeholder="{{$data['address']}}">{{$data['address']}}</textarea>
+                                        
                                         <!-- <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{$data['address']}}"> -->
                                         @error('address')
                                             <div class="alert alert-danger">{{$message}}</div>
