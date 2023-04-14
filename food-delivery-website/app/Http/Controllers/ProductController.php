@@ -55,25 +55,6 @@ class ProductController extends Controller
         return view('cart',['details' => $cart ]);
         // return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
-
-    // public function update(Request $request)
-    // {
-    //     if($request->id && $request->quantity){
-    //         $cart = session()->get('cart');
-    //         $cart[$request->id]["quantity"] = $request->quantity;
-    //         session()->put('cart', $cart);
-    //         session()->flash('success', 'Cart updated successfully');
-    //     }
-    // }
-
-    // public function update(Request $req)
-    // {
-    // $post=Post::find($req->id);
-    // $cart[$request->id]["quantity"] = $request->quantity;
-    // session()->put('cart', $cart);
-    // session()->flash('success', 'Cart updated successfully');
-    // }
-
     public function removeItem($id)
     {
         // if($request->id) {
