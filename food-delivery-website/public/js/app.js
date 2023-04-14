@@ -5948,7 +5948,7 @@ var ListedItem = /*#__PURE__*/function (_Component) {
                 height: '100px',
                 width: '100px'
               },
-              src: item.product_image
+              src: item.product_image ? item.product_image : '../img/product_img/napolitan.jpeg'
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
             className: "text-center",
@@ -5962,7 +5962,7 @@ var ListedItem = /*#__PURE__*/function (_Component) {
               onClick: function onClick() {
                 return _this3.toggleViewEditModal(item.id);
               },
-              className: "btn btn-info bi bi-pencil",
+              className: "btn btn-info bi bi-pencil text-white",
               children: " Edit Details"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
               onClick: function onClick() {
@@ -5999,13 +5999,19 @@ var ListedItem = /*#__PURE__*/function (_Component) {
         });
       }
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        children: [itemDetailsModal, addItemModal, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        children: [itemDetailsModal, addItemModal, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
+          className: "mt-4",
+          style: {
+            textAlign: 'center'
+          },
+          children: "Listed Items"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
           className: "mx-5 my-5",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
             onClick: function onClick() {
               return _this3.toggleViewAddModal();
             },
-            className: "btn btn-info bi-plus-square",
+            className: "btn btn-primary bi-plus-square",
             children: " Add Items"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("table", {
             className: "table table-striped table-bordered",
@@ -6133,12 +6139,12 @@ var Order = /*#__PURE__*/function (_Component) {
             className: "text-center",
             children: order.order_date
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-            className: "text-center",
+            className: "text-center ",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
               onClick: function onClick() {
                 return _this3.toggleViewDetailsModal(order.id);
               },
-              className: "btn btn-info bi bi-eye-fill custom-btn-margin",
+              className: "text-white btn btn-primary bi bi-eye-fill custom-btn-margin",
               children: " View Details"
             })
           })]
@@ -6155,7 +6161,13 @@ var Order = /*#__PURE__*/function (_Component) {
         });
       }
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        children: [orderDetailsModal, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        children: [orderDetailsModal, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
+          className: "mt-4",
+          style: {
+            textAlign: 'center'
+          },
+          children: "Order Received"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: "mx-5 my-5",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
             className: "table table-striped table-bordered",
@@ -6302,6 +6314,7 @@ var OrderDetailsModal = /*#__PURE__*/function (_Component) {
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(reactstrap__WEBPACK_IMPORTED_MODULE_2__.ModalFooter, {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            className: "btn btn-secondary",
             onClick: this.props.toggle,
             children: "Close"
           })
@@ -6580,15 +6593,6 @@ var ItemDetailsModal = /*#__PURE__*/function (_Component) {
                   type: "number",
                   value: this.state.productPrice,
                   onChange: this.handleProductPriceChange
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                className: "form-group my-4",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                  children: "Product Image:"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                  type: "text",
-                  value: this.state.productImg,
-                  onChange: this.handleProductImgChange
                 })]
               })]
             })
