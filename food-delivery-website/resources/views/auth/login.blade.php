@@ -58,7 +58,7 @@
 
 
                         <div class="pt-1 mb-4">
-                            <button class="btn btn-info btn-lg btn-block" type="submit">{{ __('Login') }}</button>
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">{{ __('Login') }}</button>
                         </div>
 
                         @if (Route::has('password.request'))
