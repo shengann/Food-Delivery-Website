@@ -44,13 +44,6 @@ class ShopController extends Controller
         return $data;
     }
 
-    public function showOrder($shop_id)
-    {
-        $shop = Shop::find($shop_id);
-        $data = Shop::find($shop_id)->getOrder;
-        // session()->put('shop', $shop_id);
-        return $data;
-    }
 
 
 }
