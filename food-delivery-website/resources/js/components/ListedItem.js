@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component,} from 'react';
 import ReactDOM from 'react-dom';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button,Media} from 'reactstrap'
 import axios from 'axios';
 import ItemDetailsModal from './editItem.js';
 
@@ -48,9 +48,9 @@ export default class ListedItem extends Component {
         let items = this.state.items.map((item) => {
             return (
                 <tr key={item.id}>
-                    <td className="text-center">{item.product_image}</td>
+                    <td className="text-center"><Media object style={{ height: '100px', width: '100px' }} src={item.product_image}  /></td>
                     <td className="text-center">{item.product_name}</td>
-                    <td className="text-center">{item.product_price}</td>
+                    <td className="text-center">RM {item.product_price}</td>
                     <td className="text-center">
                         <button onClick={() => this.toggleViewEditModal(item.id)} className="btn btn-info bi bi-pencil"> Edit Details</button>
                         <button className="btn btn-danger bi bi bi-trash"> Delete Item</button>
