@@ -54,26 +54,9 @@ class ProductController extends Controller
         }
         session()->put('cart', $cart);
         return view('cart',['details' => $cart ]);
-        // return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
+       
 
-    // public function update(Request $request)
-    // {
-    //     if($request->id && $request->quantity){
-    //         $cart = session()->get('cart');
-    //         $cart[$request->id]["quantity"] = $request->quantity;
-    //         session()->put('cart', $cart);
-    //         session()->flash('success', 'Cart updated successfully');
-    //     }
-    // }
-
-    // public function update(Request $req)
-    // {
-    // $post=Post::find($req->id);
-    // $cart[$request->id]["quantity"] = $request->quantity;
-    // session()->put('cart', $cart);
-    // session()->flash('success', 'Cart updated successfully');
-    // }
 
     public function removeItem($id)
     {
@@ -90,8 +73,6 @@ class ProductController extends Controller
                 error_log('delete liaooo');
                 return redirect('/showCart');
             }
-            // session()->flash('success', 'Product removed successfully');
-        // }
     }
 
     public function showCart(){
