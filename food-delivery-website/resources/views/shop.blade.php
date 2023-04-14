@@ -7,27 +7,32 @@
 <h1>{{$shop['shop_name']}}</h1>
 <div class="row align-items-center justify-content-center" style="">
   <div class="col-md-4 px-0" >
-    <img class="img-fluid" src={{$shop['shop_image']}} alt="">
+    <img class="img-fluid" src="{{$shop['shop_image']}}" alt="">
   </div>
 </div>
 
 <div class="container ">
   @foreach ($products as $product)
     <form action="addToCart" method="post">
-    @csrf
-      <div class="row justify-content-start border border-1">
+        @csrf
+        <div class="row justify-content-start border border-1">
           <input type="hidden" name="id"  value="{{$product['id']}}">
+
           <input type="hidden" name="shop_id"  value="{{$shop['id']}}">
+
           <div class="col border border-1">
-            <img class="rounded-5 w-100 p-3" src={{$product['product_image']}} alt="">
+            <img class="rounded-5 w-100 p-3" src="{{$product['product_image']}}" alt="">
           </div>
+
           <div class="col border border-1 d-flex justify-content-center align-items-center">
             {{$product['product_name']}}
           </div>
+
           <div class="col border border-1 d-flex justify-content-center align-items-center">
             {{$product['product_price']}}
           </div>
-            <div class="col border border-1 d-flex justify-content-center align-items-center">
+
+          <div class="col border border-1 d-flex justify-content-center align-items-center">
               <select class="form-select" aria-label="Default select example" name="quantity">
               <option quantity>Quantity</option>
               <option value="1">1</option>
