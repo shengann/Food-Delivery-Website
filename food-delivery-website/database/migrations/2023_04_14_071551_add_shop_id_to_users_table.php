@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRoleColumnToUsersTable extends Migration
+class AddShopIdToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddRoleColumnToUsersTable extends Migration
      */
     public function up()
     {
-        //add role to users table
         Schema::table('users', function (Blueprint $table) {
-            $table->enum('role', ['user', 'admin'])->default('user');
+            $table->integer('shop_id')->nullable();
         });
     }
 
@@ -27,7 +26,7 @@ class AddRoleColumnToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumnifExists('role');
+            $table->dropColumnIfExists('shop_id');
         });
     }
 }
