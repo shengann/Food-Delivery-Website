@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
 import axios from 'axios';
-import ItemDetailsModal from './ItemDetails.js';
+import ItemDetailsModal from './editItem.js';
 
 export default class ListedItem extends Component {
     constructor() {
         super()
         this.state = {
-            items: []
+            items: [],
+            viewEditModal: false,
+            modalId: null
         }
     }
 
@@ -26,6 +28,21 @@ export default class ListedItem extends Component {
             })
         })
     }
+
+    toggleViewEditModal = (id) => {
+        this.setState({
+            viewEditModal: !this.state.viewEditModal,
+            modalId: id
+        })
+    }
+
+    updateParentState = () => {
+        this.setState({
+            items: []
+        }, () => {
+            this.loadItem();
+        });
+    }
     render(){
 
         let items = this.state.items.map((item) => {
@@ -35,15 +52,28 @@ export default class ListedItem extends Component {
                     <td className="text-center">{item.product_name}</td>
                     <td className="text-center">{item.product_price}</td>
                     <td className="text-center">
-                        <button className="btn btn-info bi bi-pencil"> Edit Details</button>
+                        <button onClick={() => this.toggleViewEditModal(item.id)} className="btn btn-info bi bi-pencil"> Edit Details</button>
                         <button className="btn btn-danger bi bi bi-trash"> Delete Item</button>
                     </td>
                 </tr>
             )
         })
 
+        let itemDetailsModal = null;
+        if (this.state.modalId) {
+            itemDetailsModal = (
+                <ItemDetailsModal
+                    isOpen={this.state.viewEditModal}
+                    toggle={() => this.toggleViewEditModal(null)}
+                    itemId={this.state.modalId}
+                    updateParentState={this.updateParentState}
+                />
+            );
+        }
+
         return (
             <div>
+                {itemDetailsModal}
                 
                 <div className="mx-5 my-5">
                     <button className="btn btn-info bi-plus-square"> Add Items</button>
