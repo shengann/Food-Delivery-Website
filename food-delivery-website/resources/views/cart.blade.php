@@ -4,10 +4,6 @@
 <div class="container-fluid" style="background-color:#F1F1F1">
 
 
-
-<input type="hidden" id="session-data" value="<?= htmlspecialchars(json_encode(session('cart'))) ?>">
-
-
 <div id='popup'></div>
 <div id='mycomp'></div>
 
