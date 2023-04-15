@@ -1,0 +1,1 @@
+<h1>you cannot add products from different shops</h1>

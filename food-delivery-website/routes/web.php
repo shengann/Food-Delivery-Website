@@ -1,6 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +22,44 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return redirect('home');
+})->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('shop/{shop_id}',[ShopController::class, 'showProduct'])->middleware('auth');
+Route::post('shop/addToCart',[ProductController::class, 'addToCart'])->middleware('auth');
+Route::get('showCart',[ProductController::class, 'showCart'])->middleware('auth');
+Route::get('confirmOrder', [PaymentController::class, 'noPaymentMethod'])->middleware('auth');
+Route::post('confirmOrder', [PaymentController::class, 'getPaymentMethod'])->name('payment')->middleware('auth');
+Route::get('confirmOrder/confirm/{id}', [PaymentController::class, 'confirm'])->middleware('auth');
+Route::get('shop/removeItem/{product_id}',[ProductController::class, 'removeItem'])->middleware('auth');
+Route::get('removeItem/{product_id}',[ProductController::class, 'removeItem'])->middleware('auth');
+Route::get('home', [ShopController::class, 'getAllShops'])->middleware('auth');
+Route::get('home', [ShopController::class, 'findShop'])->name('search')->middleware('auth');
+
+Route::get('orderhistory/{id}', function(){
+    return view('orderHistory');
+})->middleware('auth');
+
+
+Route::get('/admin',function(){
+    return view('adminProfile');
+})->middleware('can:isAdmin')->name('admin');
+
+Route::get('/admin/listed-item', function () {
+    return view('listedItem');
+})->middleware('can:isAdmin')->name('admin');
+
+
+
+
+Route::get('profile/{id}', [UserController::class, 'findUser']);
+Route::get('profile/{id}/edit', [UserController::class, 'editProfile']);
+Route::post('profile/{id}', [UserController::class, 'updateUser'])->name('users.update');
+
+// Route::get('/admin/{shop_id}/order',[ShopController::class, 'showOrder'])->middleware('auth');
+// Route::get('/admin/{shop_id}/order/{order_id}', [OrderController::class, 'showOrder_item'])->middleware('auth');
+
